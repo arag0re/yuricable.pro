@@ -1,4 +1,4 @@
-/* css/WebSerial.css */
+/* Add this to your WebSerial.css */
 .web-serial-container {
     padding: 20px;
 }
@@ -9,10 +9,10 @@
     padding: 10px;
     border-radius: 5px;
     overflow: auto;
-    font-family: 'Courier New Bold', monospace;
+    font-family: 'Courier New', monospace;
     outline: none;
     position: relative;
-    font-size: 16px;
+    /* Added to make the cursor absolute positioning relative to the console */
 }
 
 .input-line {
@@ -24,8 +24,46 @@
     outline: none;
 }
 
+h1 { 
+    color: #c58bc5;
+}
+
+.hidden-input {
+    flex: 1;
+    border: none;
+    outline: none;
+    font-family: monospace;
+    color: #00ff00;
+    /* Match the code color */
+    background-color: transparent;
+}
+
 @keyframes blink {
     50% {
         opacity: 0;
     }
+}
+
+.code {
+    display: inline-block;
+    font-family: monospace;
+    color: #00ff00;
+}
+
+/* Style for buttons */
+button {
+    background-color: #9a197e;
+    /* Purple */
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    margin: 5px;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #c58bc5;
+    /* Darker purple on hover */
 }

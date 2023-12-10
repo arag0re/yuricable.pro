@@ -65,7 +65,10 @@ const NavBar = () => {
       </div>
       <ul className="nav-links">
         <li>
-          <Link to="/web-serial">Web Serial</Link>
+          <Link to="/console">YuriConsole</Link>
+        </li>
+        <li>
+          <Link to="/docs">Documentation</Link>
         </li>
         <li>
           <Link to="/credits">Credits</Link>
