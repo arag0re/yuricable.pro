@@ -11,10 +11,13 @@ jobs:
 
     steps:
       - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          fetch-depth: 0 # Fetch all history
-        
+          node-version: 14 # Choose the version you prefer
+
       - name: Install dependencies and build
         run: |
           npm install
@@ -23,6 +26,5 @@ jobs:
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.TOKEN }}
           publish_dir: ./build
-
