@@ -41,4 +41,4 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-    - run: npm i --save; npm run start;
+    - run: npm i --save; npm install -g serve; serve -s build;
