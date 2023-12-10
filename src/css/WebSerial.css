@@ -1,0 +1,31 @@
+/* css/WebSerial.css */
+.web-serial-container {
+    padding: 20px;
+}
+
+.console {
+    background-color: black;
+    color: limegreen;
+    padding: 10px;
+    border-radius: 5px;
+    overflow: auto;
+    font-family: 'Courier New Bold', monospace;
+    outline: none;
+    position: relative;
+    font-size: 16px;
+}
+
+.input-line {
+    display: inline-block;
+    font-family: monospace;
+    color: #00ff00;
+    white-space: pre-wrap;
+    border: none;
+    outline: none;
+}
+
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}
