@@ -6,13 +6,13 @@ const Credits = () => {
   };
 
   const titleStyle = {
-    color: 'white',
+    color: 'black',
     fontSize: '2em',
     fontWeight: 'bold',
   };
 
   const contentStyle = {
-    color: 'white',
+    color: 'black',
     fontSize: '1.2em',
   };
 

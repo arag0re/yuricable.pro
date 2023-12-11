@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { useWebSerial } from 'react-webserial-hook';
 import '../css/WebSerial.css';
+import power from '../assets/pHcwlAJ6xsRVRPRlwkK8u_power.png';
 
 const useSerial = (setConsoleLines, consoleRef, setSerial) => {
   const serial = useWebSerial({
@@ -29,6 +30,8 @@ const WebSerial = () => {
   const consoleRef = useRef(null);
   const [serial, setSerial] = useState(null);
   const [ctrlPressed, setCtrlPressed] = useState(false);
+  const [isConnected, setIsConnected] = useState(false); // New state variable
+
   useSerial(setConsoleLines, consoleRef, setSerial);
 
   useEffect(() => {
@@ -77,7 +80,18 @@ const WebSerial = () => {
   const handleStartReading = async () => {
     if (serial.port) {
       await serial.openPort();
+      setIsConnected(true); // Set isConnected to true when reading starts
       await serial.startReading();
+    }
+  };
+
+  const handleDisconnect = async () => {
+    if (serial.port) {
+      await serial.stopReading();
+      setIsConnected(false);
+      await serial.closePort().catch((err) => {
+        console.log(err);
+      });
     }
   };
 
@@ -85,38 +99,46 @@ const WebSerial = () => {
     <div className="web-serial-container">
       <h1>YuriConsole</h1>
       <button onClick={() => serial.requestPort()}>Select YuriCable</button>
-      <button onClick={handleStartReading}>Connect</button>
-      <div
-        className={`console ${ctrlPressed ? 'ctrl-pressed' : ''}`}
-        onClick={handleConsoleClick}
-        onKeyDown={handleKeyDown}
-        tabIndex={0}
-        ref={consoleRef}
-      >
-        <pre>
-          {consoleLines.map((line, index) => (
-            <code
-              key={index}
-              className={`code ${ctrlPressed ? 'clickable' : ''}`}
-              dangerouslySetInnerHTML={{
-                __html: ctrlPressed
-                  ? line
-                      .replace(/(https?:\/\/\S+)/g, (_, url) => `<a href="${url}" target="_blank">${url}</a>`)
-                      .replace(/(http:\/\/\S+)/g, (_, url) => `<a href="${url}" target="_blank">${url}</a>`)
-                  : line,
-              }}
-            />
-          ))}
-          <span
-            className="input-line"
-            contentEditable="true"
-            onInput={handleInputChange}
-            onKeyDown={handleKeyDown}
-            ref={inputRef}
-            spellCheck="false"
-          ></span>
-        </pre>
-      </div>
+      {isConnected ? (
+        <button onClick={handleDisconnect}>Disconnect</button>
+      ) : (
+        <button onClick={handleStartReading}>Connect</button>
+      )}
+      {isConnected ? (
+        <div
+          className={`console ${ctrlPressed ? 'ctrl-pressed' : ''}`}
+          onClick={handleConsoleClick}
+          onKeyDown={handleKeyDown}
+          tabIndex={0}
+          ref={consoleRef}
+        >
+          <pre>
+            {consoleLines.map((line, index) => (
+              <code
+                key={index}
+                className={`code ${ctrlPressed ? 'clickable' : ''}`}
+                dangerouslySetInnerHTML={{
+                  __html: ctrlPressed
+                    ? line
+                        .replace(/(https?:\/\/\S+)/g, (_, url) => `<a href="${url}" target="_blank">${url}</a>`)
+                        .replace(/(http:\/\/\S+)/g, (_, url) => `<a href="${url}" target="_blank">${url}</a>`)
+                    : line,
+                }}
+              />
+            ))}
+            <span
+              className="input-line"
+              contentEditable="true"
+              onInput={handleInputChange}
+              onKeyDown={handleKeyDown}
+              ref={inputRef}
+              spellCheck="false"
+            ></span>
+          </pre>
+        </div>
+      ) : (
+        <img className="power" src={power} alt="power"></img>
+      )}
     </div>
   );
 };

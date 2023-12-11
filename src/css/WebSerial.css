@@ -26,9 +26,6 @@
     outline: none;
 }
 
-h1 {
-    color: #c58bc5;
-}
 
 .console.ctrl-pressed .code.clickable {
     cursor: pointer;
@@ -75,4 +72,13 @@ button {
 
 button:hover {
     background-color: #c58bc5;
+}
+
+.power {
+    width: 80%;
+    text-align: center;
+    display: block;
+    /* Ensures the image takes up the full width */
+    margin-top: 20px;
+    /* Adjust the margin to create space between buttons and image */
 }
