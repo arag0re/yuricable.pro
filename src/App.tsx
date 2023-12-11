@@ -4,18 +4,20 @@ import Home from './components/Home';
 import Console from './components/Console';
 import Credits from './components/Credits';
 import Documentation from './components/Documentation';
-import Navbar from './components/NavBar'; // Import the Navbar component
-import './App.css'; // Import any global styling for your app
+import Navbar from './components/NavBar';
+import './App.css'; 
 
 function App() {
+  const isChromium = (window as any).chrome !== undefined;
+
   return (
     <Router>
-      <Navbar /> {/* Include the Navbar component */}
+      <Navbar />
       <Routes>
-        <Route path="/" Component={Home} />
-        <Route path="/console" Component={Console} />
-        <Route path="/docs" Component={Documentation} />
-        <Route path="/credits" Component={Credits} />
+        <Route path="/" element={<Home />} />
+        {isChromium && <Route path="/console" element={<Console />} />}
+        <Route path="/docs" element={<Documentation />} />
+        <Route path="/credits" element={<Credits />} />
       </Routes>
     </Router>
   );
