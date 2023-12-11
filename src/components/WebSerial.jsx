@@ -2,7 +2,6 @@ import { useState, useEffect, useRef } from 'react';
 import { useWebSerial } from 'react-webserial-hook';
 import '../css/WebSerial.css';
 
-// Custom hook to initialize and hold the serial object
 const useSerial = (setConsoleLines, consoleRef, setSerial) => {
   const serial = useWebSerial({
     onData: (data) => {
@@ -29,10 +28,29 @@ const WebSerial = () => {
   const inputRef = useRef(null);
   const consoleRef = useRef(null);
   const [serial, setSerial] = useState(null);
+  const [ctrlPressed, setCtrlPressed] = useState(false);
   useSerial(setConsoleLines, consoleRef, setSerial);
 
   useEffect(() => {
-    // Additional initialization logic if needed
+    const handleKeyDown = (e) => {
+      if (e.key === 'Control') {
+        setCtrlPressed(true);
+      }
+    };
+
+    const handleKeyUp = (e) => {
+      if (e.key === 'Control') {
+        setCtrlPressed(false);
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+    document.addEventListener('keyup', handleKeyUp);
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+      document.removeEventListener('keyup', handleKeyUp);
+    };
   }, []);
 
   const handleInputChange = () => {
@@ -44,7 +62,6 @@ const WebSerial = () => {
     if (e.key === 'Enter') {
       e.preventDefault();
       const inputText = inputValue.trim();
-      // Access serial object directly
       if (inputText !== '' && serial.port && serial.port.writable) {
         const encoder = new TextEncoder();
         const dataArray = encoder.encode(inputText);
@@ -69,17 +86,30 @@ const WebSerial = () => {
       <h1>YuriConsole</h1>
       <button onClick={() => serial.requestPort()}>Select YuriCable</button>
       <button onClick={handleStartReading}>Connect</button>
-      <div className="console" onClick={handleConsoleClick} onKeyDown={handleKeyDown} tabIndex={0} ref={consoleRef}>
+      <div
+        className={`console ${ctrlPressed ? 'ctrl-pressed' : ''}`}
+        onClick={handleConsoleClick}
+        onKeyDown={handleKeyDown}
+        tabIndex={0}
+        ref={consoleRef}
+      >
         <pre>
           {consoleLines.map((line, index) => (
-            <code key={index} className="code">
-              {line}
-            </code>
+            <code
+              key={index}
+              className={`code ${ctrlPressed ? 'clickable' : ''}`}
+              dangerouslySetInnerHTML={{
+                __html: ctrlPressed
+                  ? line.replace(/(https?:\/\/\S+)/g, (_, url) => `<a href="${url}" target="_blank">${url}</a>`)
+                  : line,
+              }}
+            />
           ))}
           <span
             className="input-line"
             contentEditable="true"
             onInput={handleInputChange}
+            onKeyDown={handleKeyDown}
             ref={inputRef}
             spellCheck="false"
           ></span>

@@ -12,10 +12,8 @@
     overflow: auto;
     font-family: 'Courier New', monospace;
     outline: none;
-    position: relative;
-    /* Added to make the cursor absolute positioning relative to the console */
+    position: relative
     max-height: 30em;
-    /* Set the maximum height for the console */
     margin-top: 10px;
 }
 
@@ -32,13 +30,21 @@ h1 {
     color: #c58bc5;
 }
 
+.console.ctrl-pressed .code.clickable {
+    cursor: pointer;
+}
+
+.console.ctrl-pressed .code.clickable a {
+    color: blue;
+    text-decoration: underline;
+}
+
 .hidden-input {
     flex: 1;
     border: none;
     outline: none;
     font-family: monospace;
     color: #00ff00;
-    /* Match the code color */
     background-color: transparent;
 }
 
@@ -50,17 +56,14 @@ h1 {
 
 .code {
     display: block;
-    /* Change to block for proper line rendering */
     font-family: monospace;
     color: #00ff00;
     white-space: pre-wrap;
-    /* Preserve whitespace and allow line breaks */
 }
 
 /* Style for buttons */
 button {
     background-color: #9a197e;
-    /* Purple */
     color: white;
     border: none;
     padding: 10px 15px;
@@ -72,5 +75,4 @@ button {
 
 button:hover {
     background-color: #c58bc5;
-    /* Darker purple on hover */
 }

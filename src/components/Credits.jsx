@@ -145,7 +145,7 @@ const Credits = () => {
           </li>
           <li>
             <span style={linkStyle} onClick={() => toggleVideo('vmQcrU5pNvU')}>
-              Inside Apple's Lightning: JTAGging The IPhone For Fuzzing And Profit
+              Inside Apple's Lightning: JTAGging The iPhone For Fuzzing And Profit
             </span>
             {selectedVideo === 'vmQcrU5pNvU' && embedYouTubeVideo('vmQcrU5pNvU')}
           </li>
