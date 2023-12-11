@@ -1,6 +1,7 @@
 /* Add this to your WebSerial.css */
 .web-serial-container {
     padding: 20px;
+    margin: 0px auto 400px
 }
 
 .console {
