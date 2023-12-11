@@ -1,7 +1,6 @@
 // components/NavBar.js
 import { Link } from 'react-router-dom';
 import '../css/NavBar.css';
-import logo from '../assets/logo.svg';
 
 const NavBar = () => {
   const isChromium = window.chrome !== undefined;

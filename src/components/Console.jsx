@@ -3,7 +3,15 @@ import { useWebSerial } from 'react-webserial-hook';
 import '../css/Console.css';
 import power from '../assets/pHcwlAJ6xsRVRPRlwkK8u_power.png';
 
-const useSerial = (setConsoleLines, consoleRef, setSerial) => {
+const Console = () => {
+  const [inputValue, setInputValue] = useState('');
+  const [consoleLines, setConsoleLines] = useState(['']);
+  const [cursorVisible, setCursorVisible] = useState(true); // New state for cursor visibility
+  const inputRef = useRef(null);
+  const consoleRef = useRef(null);
+  const [ctrlPressed, setCtrlPressed] = useState(false);
+  const [isConnected, setIsConnected] = useState(false);
+
   const serial = useWebSerial({
     onData: (data) => {
       const decoder = new TextDecoder();
@@ -18,21 +26,14 @@ const useSerial = (setConsoleLines, consoleRef, setSerial) => {
     },
   });
 
+  // Toggle cursor visibility every 500 milliseconds
   useEffect(() => {
-    setSerial(serial);
-  }, [serial, setSerial]);
-};
+    const intervalId = setInterval(() => {
+      setCursorVisible((prev) => !prev);
+    }, 500);
 
-const Console = () => {
-  const [inputValue, setInputValue] = useState('');
-  const [consoleLines, setConsoleLines] = useState(['']);
-  const inputRef = useRef(null);
-  const consoleRef = useRef(null);
-  const [serial, setSerial] = useState(null);
-  const [ctrlPressed, setCtrlPressed] = useState(false);
-  const [isConnected, setIsConnected] = useState(false); // New state variable
-
-  useSerial(setConsoleLines, consoleRef, setSerial);
+    return () => clearInterval(intervalId);
+  }, []);
 
   useEffect(() => {
     const handleKeyDown = (e) => {
@@ -81,7 +82,7 @@ const Console = () => {
     if (serial.port) {
       if (!serial.port.readable) {
         await serial.openPort();
-        setIsConnected(true); // Set isConnected to true when reading starts
+        setIsConnected(true);
         await serial.startReading();
       }
       setIsConnected(true);
@@ -119,7 +120,9 @@ const Console = () => {
             {consoleLines.map((line, index) => (
               <code
                 key={index}
-                className={`code ${ctrlPressed ? 'clickable' : ''}`}
+                className={`code ${ctrlPressed ? 'clickable' : ''} ${
+                  index === consoleLines.length - 1 ? 'last-line' : ''
+                }`}
                 dangerouslySetInnerHTML={{
                   __html: ctrlPressed
                     ? line
@@ -129,14 +132,16 @@ const Console = () => {
                 }}
               />
             ))}
-            <span
-              className="input-line"
-              contentEditable="true"
-              onInput={handleInputChange}
-              onKeyDown={handleKeyDown}
-              ref={inputRef}
-              spellCheck="false"
-            ></span>
+            <div className="input-container">
+              <span
+                className={`input-line ${cursorVisible ? 'cursor-visible' : ''}`}
+                contentEditable="true"
+                onInput={handleInputChange}
+                onKeyDown={handleKeyDown}
+                ref={inputRef}
+                spellCheck="false"
+              ></span>
+            </div>
           </pre>
         </div>
       ) : (

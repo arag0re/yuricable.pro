@@ -7,7 +7,7 @@
 .console {
     background-color: black;
     color: limegreen;
-    padding: 10px;
+    padding: 14px;
     border-radius: 5px;
     overflow: auto;
     font-family: 'Courier New', monospace;
@@ -15,15 +15,18 @@
     position: relative;
     max-height: 30em;
     margin-top: 10px;
+    position: relative;
 }
 
 .input-line {
     display: inline-block;
     font-family: monospace;
+    font-size: 14px;
     color: #00ff00;
     white-space: pre-wrap;
     border: none;
     outline: none;
+    caret-color: transparent;
 }
 
 
@@ -87,4 +90,37 @@ button:hover {
     border-radius: 6px;
     margin-top: 20px;
     /* Adjust the margin to create space between buttons and image */
+}
+
+/* Styles for the blinking pink square cursor */
+.input-line.cursor-visible::after {
+    background-color: transparent;
+}
+
+.input-line.cursor-visible:focus::after {
+    
+    /* Hide the cursor when input line is focused */
+    content: '';
+        /* Empty content to create a square */
+        display: inline-block;
+        width: 0.7em;
+        margin-left: 2px;
+        /* Adjust the width of the square */
+        height: 0.90em;
+        /* Adjust the height of the square */
+        background-color: #9a197e;
+        /* Color of the square */
+        animation: cursor-blink 0.5s infinite;
+}
+
+@keyframes cursor-blink {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
 }

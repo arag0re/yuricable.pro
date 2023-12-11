@@ -7,7 +7,6 @@ const Home = () => {
       <h1>Welcome to the YuriCable Pro Max website</h1>
       {/* Add content for the home page */}
       <div id="container">
-        <ConnectCableAnimation />
       </div>
     </div>
   );
