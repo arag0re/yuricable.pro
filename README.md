@@ -1,6 +1,7 @@
-# Getting Started with Create React App
+# YuriCable Pro Max Website
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is the Website for the YuriCable-Pro-Max (Lightning SWD) App for Flipper Zero.  
+> ⚠️ **Important Note**: We use WebSerial in this App, therefore only Chromium Base Browsers are supported!
 
 ## Available Scripts
 

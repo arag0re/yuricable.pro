@@ -13,6 +13,9 @@
     outline: none;
     position: relative;
     /* Added to make the cursor absolute positioning relative to the console */
+    max-height: 30em;
+    /* Set the maximum height for the console */
+    margin-top: 10px;
 }
 
 .input-line {
@@ -24,7 +27,7 @@
     outline: none;
 }
 
-h1 { 
+h1 {
     color: #c58bc5;
 }
 
@@ -45,9 +48,12 @@ h1 {
 }
 
 .code {
-    display: inline-block;
+    display: block;
+    /* Change to block for proper line rendering */
     font-family: monospace;
     color: #00ff00;
+    white-space: pre-wrap;
+    /* Preserve whitespace and allow line breaks */
 }
 
 /* Style for buttons */
