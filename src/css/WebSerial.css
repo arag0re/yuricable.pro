@@ -12,7 +12,7 @@
     overflow: auto;
     font-family: 'Courier New', monospace;
     outline: none;
-    position: relative
+    position: relative;
     max-height: 30em;
     margin-top: 10px;
 }
