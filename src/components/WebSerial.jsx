@@ -100,7 +100,9 @@ const WebSerial = () => {
               className={`code ${ctrlPressed ? 'clickable' : ''}`}
               dangerouslySetInnerHTML={{
                 __html: ctrlPressed
-                  ? line.replace(/(https?:\/\/\S+)/g, (_, url) => `<a href="${url}" target="_blank">${url}</a>`)
+                  ? line
+                      .replace(/(https?:\/\/\S+)/g, (_, url) => `<a href="${url}" target="_blank">${url}</a>`)
+                      .replace(/(http:\/\/\S+)/g, (_, url) => `<a href="${url}" target="_blank">${url}</a>`)
                   : line,
               }}
             />
