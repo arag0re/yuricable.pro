@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 const Credits = () => {
   const containerStyle = {
@@ -6,13 +6,13 @@ const Credits = () => {
   };
 
   const titleStyle = {
-    color: 'black',
+    color: 'white',
     fontSize: '2em',
     fontWeight: 'bold',
   };
 
   const contentStyle = {
-    color: 'black',
+    color: 'white',
     fontSize: '1.2em',
   };
 

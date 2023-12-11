@@ -1,5 +1,5 @@
 // ConnectCableAnimation.jsx
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import '../css/ConnectCableAnimation.css';
 import lightning from '../assets/noun-iphone-plug-19802.svg';
 import phone from '../assets/phone.png';

@@ -1,22 +1,4 @@
-// components/NavBar.js
-import { Link } from 'react-router-dom';
-import '../css/NavBar.css';
-import logo from '../assets/logo.svg';
-
-const NavBar = () => {
-  const isChromium = window.chrome !== undefined;
-  const navLinks = [
-    { to: '/docs', text: 'Documentation' },
-    { to: '/credits', text: 'Credits' },
-  ];
-
-  const linksToShow = isChromium ? [...navLinks, { to: '/console', text: 'Console' }] : navLinks;
-
-  return (
-    <nav className="navbar">
-      <div className="logo">
-        <Link to="/">
-          <svg
+<svg
             xmlns="http://www.w3.org/2000/svg"
             version="1.1"
             xlink="http://www.w3.org/1999/xlink"
@@ -69,17 +51,3 @@ const NavBar = () => {
               </g>
             </g>
           </svg>
-        </Link>
-      </div>
-      <ul className="nav-links">
-        {linksToShow.map((link, index) => (
-          <li key={index}>
-            <Link to={link.to}>{link.text}</Link>
-          </li>
-        ))}
-      </ul>
-    </nav>
-  );
-};
-
-export default NavBar;

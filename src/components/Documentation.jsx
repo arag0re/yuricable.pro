@@ -1,6 +1,4 @@
 // components/Documentation.js
-import React from 'react';
-
 const Documentation = () => {
   return (
     <div className="web-serial-container">

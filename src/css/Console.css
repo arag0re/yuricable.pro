@@ -51,6 +51,11 @@
     }
 }
 
+
+h1 {
+    color: #c58bc5
+}
+
 .code {
     display: block;
     font-family: monospace;
@@ -79,6 +84,7 @@ button:hover {
     text-align: center;
     display: block;
     /* Ensures the image takes up the full width */
+    border-radius: 6px;
     margin-top: 20px;
     /* Adjust the margin to create space between buttons and image */
 }

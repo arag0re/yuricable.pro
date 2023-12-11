@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { useWebSerial } from 'react-webserial-hook';
-import '../css/WebSerial.css';
+import '../css/Console.css';
 import power from '../assets/pHcwlAJ6xsRVRPRlwkK8u_power.png';
 
 const useSerial = (setConsoleLines, consoleRef, setSerial) => {
@@ -23,7 +23,7 @@ const useSerial = (setConsoleLines, consoleRef, setSerial) => {
   }, [serial, setSerial]);
 };
 
-const WebSerial = () => {
+const Console = () => {
   const [inputValue, setInputValue] = useState('');
   const [consoleLines, setConsoleLines] = useState(['']);
   const inputRef = useRef(null);
@@ -79,8 +79,12 @@ const WebSerial = () => {
 
   const handleStartReading = async () => {
     if (serial.port) {
-      await serial.openPort();
-      setIsConnected(true); // Set isConnected to true when reading starts
+      if (!serial.port.readable) {
+        await serial.openPort();
+        setIsConnected(true); // Set isConnected to true when reading starts
+        await serial.startReading();
+      }
+      setIsConnected(true);
       await serial.startReading();
     }
   };
@@ -97,7 +101,6 @@ const WebSerial = () => {
 
   return (
     <div className="web-serial-container">
-      <h1>YuriConsole</h1>
       <button onClick={() => serial.requestPort()}>Select YuriCable</button>
       {isConnected ? (
         <button onClick={handleDisconnect}>Disconnect</button>
@@ -143,4 +146,4 @@ const WebSerial = () => {
   );
 };
 
-export default WebSerial;
+export default Console;
