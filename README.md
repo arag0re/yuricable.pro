@@ -3,6 +3,8 @@
 This is the Website for the YuriCable-Pro-Max (Lightning SWD) App for Flipper Zero.  
 > ⚠️ **Important Note**: We use WebSerial in this App, therefore only Chromium Base Browsers are supported!
 
+![](./docs/Screenshot.png)
+
 ## Available Scripts
 
 In the project directory, you can run:
