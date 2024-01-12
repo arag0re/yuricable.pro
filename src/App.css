@@ -1,5 +1,5 @@
 .App {
-  text-align: left;
+  text-align: center;
 }
 
 .App-logo {
@@ -32,7 +32,38 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
+}
+
+/* src/App.css */
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: rgb(55, 35, 61);
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+/* Add any additional global styling for your app */
+
+p {
+  color: white
+}
+
+.container {
+  position: relative;
+  padding-left: 10%;
+  padding-right: 10%;
+  text-align: center;
+  margin: 0 auto;
+  /* Center the container horizontally */
+  max-width: 80%;
+  /* Adjust the max-width as needed */
 }

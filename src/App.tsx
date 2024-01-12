@@ -1,15 +1,23 @@
-import React from 'react'
+// src/App.js
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import Home from './pages/Home'
+import CLI from './pages/CLI'
+import Credits from './pages/Credits'
+import NavBarTop from './nav/NavBarTop'
 import './App.css'
-import Console from './pages/Console'
 
 function App() {
+   const isChromium = (window as any).chrome !== undefined
+
    return (
-      <div className="App">
-         <header className="App-header">
-            <p>Console</p>
-            <Console></Console>
-         </header>
-      </div>
+      <Router>
+         <NavBarTop />
+         <Routes>
+            <Route path="/" element={<Home />} />
+            {isChromium && <Route path="/cli" element={<CLI />} />}
+            <Route path="/credits" element={<Credits />} />
+         </Routes>
+      </Router>
    )
 }
 
