@@ -213,6 +213,7 @@ class CLI extends Component<{}, CLIState> {
 
             let buffer = null
             for (;;) {
+               // eslint-disable-next-line no-loop-func
                const { value, done } = await (async () => {
                   if (reader instanceof ReadableStreamBYOBReader) {
                      if (!buffer) {
