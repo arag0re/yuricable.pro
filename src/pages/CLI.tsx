@@ -3,7 +3,9 @@ import { Terminal } from 'xterm'
 import { FitAddon } from 'xterm-addon-fit'
 import { WebLinksAddon } from 'xterm-addon-web-links'
 import 'xterm/css/xterm.css'
-
+interface CLIState {
+   isConnected: boolean
+}
 declare global {
    interface SerialPortInfo {
       usbVendorId?: number
@@ -22,7 +24,6 @@ declare global {
       parity?: 'none' | 'even' | 'odd'
       stopBits?: 1 | 2
    }
-
    export class SerialPort extends EventTarget {
       readonly readable: ReadableStream
       readonly writable: WritableStream
@@ -53,11 +54,7 @@ declare global {
 
 let reader: ReadableStreamDefaultReader | ReadableStreamBYOBReader | undefined
 let port: SerialPort | undefined
-const termStyle = {
-   height: '100%',
-}
-
-class CLI extends Component<{}> {
+class CLI extends Component<{}, CLIState> {
    flipperDeviceFilter: SerialPortRequestOptions
    term: Terminal
    fitAddon: FitAddon
@@ -68,8 +65,9 @@ class CLI extends Component<{}> {
       super(props)
 
       this.state = {
-         port: null,
+         isConnected: false,
       }
+
       this.flipperDeviceFilter = {
          filters: [
             {
@@ -82,8 +80,13 @@ class CLI extends Component<{}> {
 
       // Terminal setup
       this.term = new Terminal({
-         scrollback: 100_000,
+         scrollback: 10_000,
+         rows: 35,
+         cursorBlink: true,
+         cursorStyle: 'block',
+         cursorInactiveStyle: 'none',
       })
+
       this.fitAddon = new FitAddon()
       this.encoder = new TextEncoder()
       //let toFlush = ''
@@ -109,15 +112,30 @@ class CLI extends Component<{}> {
    componentDidMount() {
       this.initializeTerminal()
       this.setupEventListeners()
+      if (this.terminalElement) {
+         const existingClass = Array.from(this.terminalElement.classList).find(
+            (className) => className.startsWith('xterm-dom-renderer-owner-'),
+         )
+
+         // Remove the existing class if found
+         if (existingClass) {
+            this.terminalElement.classList.toggle(existingClass, true)
+         }
+
+         // Toggle the new class
+         //const className = `xterm-dom-renderer-owner-${digit}`
+         //terminalElement.classList.toggle(className, true)
+      }
    }
 
    initializeTerminal() {
       const { term } = this
       if (this.terminalElement) {
          term.open(this.terminalElement)
+
          term.loadAddon(this.fitAddon)
          term.loadAddon(new WebLinksAddon())
-
+         //this.fitAddon.fit()
          term.onData((data) => {})
       }
    }
@@ -131,13 +149,18 @@ class CLI extends Component<{}> {
          throw new Error('no terminal instance found')
       }
 
-      if (this.term.rows === 0) {
+      if (this.term.rows <= 1) {
          console.log('No output yet')
          return
       }
 
       this.term.selectAll()
       const contents = this.term.getSelection()
+      console.log('contents: ' + contents)
+      if (contents === '  ') {
+         console.log('No output yet')
+         return
+      }
       this.term.clearSelection()
       const linkContent = URL.createObjectURL(
          new Blob([new TextEncoder().encode(contents).buffer], {
@@ -160,14 +183,16 @@ class CLI extends Component<{}> {
          //this.setState({ port })
          await port.open({
             baudRate: 115200,
-            bufferSize: 255,
+            bufferSize: 8 * 1024,
             dataBits: 8,
             stopBits: 1,
             parity: 'none',
             flowControl: 'none',
          })
+         this.term.clear()
          this.term.writeln('<CONNECTED>')
          console.log('opened port')
+         this.setState({ isConnected: true })
       } catch (error) {
          //console.error('Error requesting or opening port:', error)
          console.error(error)
@@ -191,10 +216,10 @@ class CLI extends Component<{}> {
                const { value, done } = await (async () => {
                   if (reader instanceof ReadableStreamBYOBReader) {
                      if (!buffer) {
-                        buffer = new ArrayBuffer(255)
+                        buffer = new ArrayBuffer(8 * 1024)
                      }
                      const { value, done } = await reader.read(
-                        new Uint8Array(buffer, 0, 255),
+                        new Uint8Array(buffer, 0, 8 * 1024),
                      )
                      buffer = value?.buffer
                      return { value, done }
@@ -268,6 +293,7 @@ class CLI extends Component<{}> {
    markDisconnected(): void {
       this.term.writeln('<DISCONNECTED>')
       port = undefined
+      this.setState({ isConnected: false })
    }
 
    clearTerminalContents(): void {
@@ -283,20 +309,24 @@ class CLI extends Component<{}> {
       this.term.clear()
    }
 
+   onResize() {
+      this.fitAddon.fit()
+   }
    render() {
       return (
          <div>
-            <div
-               style={termStyle}
-               id="terminal"
-               ref={(el) => (this.terminalElement = el)}
-            ></div>
-            <button id="request-port" onClick={this.requestAndOpenPort}>
-               Connect
-            </button>
-            <button id="disconnect" onClick={this.disconnectFromPort}>
-               Disconnect
-            </button>
+            <div id="terminal" ref={(el) => (this.terminalElement = el)}></div>
+
+            {this.state.isConnected ? (
+               <button id="disconnect" onClick={this.disconnectFromPort}>
+                  Disconnect
+               </button>
+            ) : (
+               <button id="request-port" onClick={this.requestAndOpenPort}>
+                  Connect
+               </button>
+            )}
+
             <button id="download" onClick={this.downloadTerminalContents}>
                Download
             </button>

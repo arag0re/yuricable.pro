@@ -67,3 +67,12 @@ p {
   max-width: 80%;
   /* Adjust the max-width as needed */
 }
+
+#terminal {
+  height: 100%;
+  /* Use 100% if preferred */
+}
+
+.xterm-dom-renderer-owner-1 {
+  display: none;
+}
