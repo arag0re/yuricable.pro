@@ -3,6 +3,13 @@ import { Terminal } from 'xterm'
 import { FitAddon } from 'xterm-addon-fit'
 import { WebLinksAddon } from 'xterm-addon-web-links'
 import 'xterm/css/xterm.css'
+import { TbPlugConnected } from "react-icons/tb";
+import { GiBroom } from "react-icons/gi";
+import { PiDownload } from "react-icons/pi";
+import { TbPlugConnectedX } from "react-icons/tb";
+
+
+
 interface CLIState {
    isConnected: boolean
 }
@@ -318,22 +325,25 @@ class CLI extends Component<{}, CLIState> {
          <div>
             <div id="terminal" ref={(el) => (this.terminalElement = el)}></div>
 
-            {this.state.isConnected ? (
-               <button id="disconnect" onClick={this.disconnectFromPort}>
-                  Disconnect
+            <div id="bar"> {this.state.isConnected ? (
+
+               <button id="button" ><TbPlugConnectedX id="disconnect" onClick={this.disconnectFromPort}/>
                </button>
+
             ) : (
-               <button id="request-port" onClick={this.requestAndOpenPort}>
-                  Connect
-               </button>
+               <button id="button" ><TbPlugConnected id="request-port" onClick={this.requestAndOpenPort}/></button>
+             
             )}
 
-            <button id="download" onClick={this.downloadTerminalContents}>
-               Download
-            </button>
-            <button id="clear" onClick={this.clearTerminalContents}>
-               Clear
-            </button>
+            <button id="button" ><PiDownload id="download" onClick={this.downloadTerminalContents}/></button>
+
+            
+            
+            <button id="button" ><GiBroom id="clear" onClick={this.clearTerminalContents}/></button>
+           </div>
+           
+            
+            
          </div>
       )
    }

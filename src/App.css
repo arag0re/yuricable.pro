@@ -76,3 +76,48 @@ p {
 .xterm-dom-renderer-owner-1 {
   display: none;
 }
+
+#bar{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+#disconnect{
+  color: #c58bc5;
+  height: 30px;
+  width: 30px;
+  margin: auto;
+}
+#request-port{
+  color: #c58bc5;
+  height: 30px;
+  width: 30px;
+  margin-left: 20px;
+}
+#clear{
+  color: #c58bc5;
+  height: 30px;
+  width: 30px;
+  margin-right: 20px;
+  
+}
+
+#download{
+  color: #c58bc5;
+  height: 30px;
+  width: 30px;
+  margin: auto;
+}
+#button{
+  background-color: rgb(55, 35, 61);
+  border: none;
+  margin-bottom: 20px;
+}
+#button :hover{
+ color: white;
+
+}
+
+

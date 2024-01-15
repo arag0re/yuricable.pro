@@ -6,6 +6,7 @@ import Credits from './pages/Credits'
 import NavBarTop from './nav/NavBarTop'
 import './App.css'
 
+
 function App() {
    const isChromium = (window as any).chrome !== undefined
 
