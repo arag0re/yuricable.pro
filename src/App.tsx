@@ -1,6 +1,6 @@
 // src/App.js
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
-import Home from './pages/Home'
+import Home from './pages/CLI'
 import CLI from './pages/CLI'
 import Credits from './pages/Credits'
 import NavBarTop from './nav/NavBarTop'

@@ -7,10 +7,11 @@ const NavBarTop = () => {
    const navLinks = [
       { to: '/docs', text: 'Documentation' },
       { to: '/credits', text: 'Credits' },
+      
    ]
 
-   const linksToShow = navigator.serial
-      ? [...navLinks, { to: '/cli', text: 'CLI' }]
+  const linksToShow = navigator.serial
+      ? [...navLinks, ]
       : navLinks
 
    return (
