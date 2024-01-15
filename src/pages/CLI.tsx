@@ -174,11 +174,11 @@ class CLI extends Component<{}, CLIState> {
    }
 
    async requestAndOpenPort() {
-      port = await navigator.serial.requestPort(this.flipperDeviceFilter)
-      if (!port) {
-         return
-      }
       try {
+         port = await navigator.serial.requestPort(this.flipperDeviceFilter)
+         if (!port) {
+            return
+         }
          console.log(port)
          //this.setState({ port })
          await port.open({
