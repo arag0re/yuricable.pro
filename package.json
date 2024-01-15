@@ -2,7 +2,6 @@
    "name": "ts_yuricable.pro",
    "version": "0.1.0",
    "private": true,
-   "homepage": "https://arag0re.github.io/yuricable/",
    "dependencies": {
       "@babel/plugin-proposal-private-property-in-object": "*",
       "@types/node": "^16.18.70",

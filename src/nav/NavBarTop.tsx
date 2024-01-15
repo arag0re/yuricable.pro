@@ -4,12 +4,7 @@ import '../css/NavBarTop.css'
 import { Component } from 'react'
 
 export default class NavBarTop extends Component {
-   //const isChromium = window.chrome !== undefined
-   navLinks = [
-      { to: '/docs', text: 'Documentation' },
-      { to: '/credits', text: 'Credits' },
-   ]
-
+   navLinks = [{ to: '/credits', text: 'Credits' }]
    linksToShow = navigator.serial ? [...this.navLinks] : this.navLinks
 
    render() {

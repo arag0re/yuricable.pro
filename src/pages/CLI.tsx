@@ -3,12 +3,10 @@ import { Terminal } from 'xterm'
 import { FitAddon } from 'xterm-addon-fit'
 import { WebLinksAddon } from 'xterm-addon-web-links'
 import 'xterm/css/xterm.css'
-import { TbPlugConnected } from "react-icons/tb";
-import { GiBroom } from "react-icons/gi";
-import { PiDownload } from "react-icons/pi";
-import { TbPlugConnectedX } from "react-icons/tb";
-
-
+import { TbPlugConnected } from 'react-icons/tb'
+import { GiBroom } from 'react-icons/gi'
+import { PiDownload } from 'react-icons/pi'
+import { TbPlugConnectedX } from 'react-icons/tb'
 
 interface CLIState {
    isConnected: boolean
@@ -96,7 +94,6 @@ class CLI extends Component<{}, CLIState> {
 
       this.fitAddon = new FitAddon()
       this.encoder = new TextEncoder()
-      //let toFlush = ''
       this.term.onData((data) => {
          if (port?.writable == null) {
             console.warn(`unable to find writable port`)
@@ -118,21 +115,6 @@ class CLI extends Component<{}, CLIState> {
 
    componentDidMount() {
       this.initializeTerminal()
-      this.setupEventListeners()
-      if (this.terminalElement) {
-         const existingClass = Array.from(this.terminalElement.classList).find(
-            (className) => className.startsWith('xterm-dom-renderer-owner-'),
-         )
-
-         // Remove the existing class if found
-         if (existingClass) {
-            this.terminalElement.classList.toggle(existingClass, true)
-         }
-
-         // Toggle the new class
-         //const className = `xterm-dom-renderer-owner-${digit}`
-         //terminalElement.classList.toggle(className, true)
-      }
    }
 
    initializeTerminal() {
@@ -142,13 +124,9 @@ class CLI extends Component<{}, CLIState> {
 
          term.loadAddon(this.fitAddon)
          term.loadAddon(new WebLinksAddon())
-         //this.fitAddon.fit()
+         this.fitAddon.fit()
          term.onData((data) => {})
       }
-   }
-
-   setupEventListeners() {
-      // Add your event listeners here
    }
 
    downloadTerminalContents(): void {
@@ -164,7 +142,7 @@ class CLI extends Component<{}, CLIState> {
       this.term.selectAll()
       const contents = this.term.getSelection()
       console.log('contents: ' + contents)
-      if (contents === '  ') {
+      if (contents === '') {
          console.log('No output yet')
          return
       }
@@ -186,8 +164,6 @@ class CLI extends Component<{}, CLIState> {
          if (!port) {
             return
          }
-         console.log(port)
-         //this.setState({ port })
          await port.open({
             baudRate: 115200,
             bufferSize: 8 * 1024,
@@ -198,15 +174,9 @@ class CLI extends Component<{}, CLIState> {
          })
          this.term.clear()
          this.term.writeln('<CONNECTED>')
-         console.log('opened port')
          this.setState({ isConnected: true })
       } catch (error) {
-         //console.error('Error requesting or opening port:', error)
          console.error(error)
-         if (error instanceof Error) {
-            this.term.writeln(`<ERROR: ${error.message}>`)
-         }
-         this.markDisconnected()
          return
       }
 
@@ -235,7 +205,6 @@ class CLI extends Component<{}, CLIState> {
                      return await reader.read()
                   }
                })()
-
                if (value) {
                   await new Promise<void>((resolve) => {
                      this.term.write(value, resolve)
@@ -324,26 +293,37 @@ class CLI extends Component<{}, CLIState> {
       return (
          <div>
             <div id="terminal" ref={(el) => (this.terminalElement = el)}></div>
-
-            <div id="bar"> {this.state.isConnected ? (
-
-               <button id="button" ><TbPlugConnectedX id="disconnect" onClick={this.disconnectFromPort}/>
+            <div id="bar">
+               {' '}
+               {this.state.isConnected ? (
+                  <button className="custombutton">
+                     <TbPlugConnectedX
+                        id="disconnect"
+                        onClick={this.disconnectFromPort}
+                     />
+                     <span className="tooltip">Disconnect</span>
+                  </button>
+               ) : (
+                  <button className="custombutton">
+                     <TbPlugConnected
+                        id="request-port"
+                        onClick={this.requestAndOpenPort}
+                     />
+                     <span className="tooltip">Disconnect</span>
+                  </button>
+               )}
+               <button className="custombutton">
+                  <PiDownload
+                     id="download"
+                     onClick={this.downloadTerminalContents}
+                  />
+                  <span className="tooltip">Disconnect</span>
                </button>
-
-            ) : (
-               <button id="button" ><TbPlugConnected id="request-port" onClick={this.requestAndOpenPort}/></button>
-             
-            )}
-
-            <button id="button" ><PiDownload id="download" onClick={this.downloadTerminalContents}/></button>
-
-            
-            
-            <button id="button" ><GiBroom id="clear" onClick={this.clearTerminalContents}/></button>
-           </div>
-           
-            
-            
+               <button className="custombutton">
+                  <GiBroom id="clear" onClick={this.clearTerminalContents} />
+                  <span className="tooltip">Disconnect</span>
+               </button>
+            </div>
          </div>
       )
    }

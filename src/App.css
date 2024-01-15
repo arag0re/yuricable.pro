@@ -90,18 +90,19 @@ p {
   width: 30px;
   margin: auto;
 }
+
 #request-port{
   color: #c58bc5;
   height: 30px;
   width: 30px;
-  margin-left: 20px;
+  margin: auto;
 }
+
 #clear{
   color: #c58bc5;
   height: 30px;
   width: 30px;
-  margin-right: 20px;
-  
+  margin: auto;
 }
 
 #download{
@@ -110,14 +111,49 @@ p {
   width: 30px;
   margin: auto;
 }
-#button{
+
+.custombutton {
   background-color: rgb(55, 35, 61);
   border: none;
   margin-bottom: 20px;
 }
-#button :hover{
+
+.custombutton :hover{
  color: white;
 
 }
 
+.terminal-container {
+  z-index: 9999;
+}
 
+.custombutton {
+  position: relative;
+    margin: auto;
+  /* Set the button as a positioned container for the tooltip */
+}
+
+.custombutton .tooltip {
+  visibility: hidden;
+  width: relative;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 4px;
+  padding: 3px;
+
+  /* Position the tooltip relative to the button */
+  position: absolute;
+  z-index: 1;
+  font-size: small;
+  top: 100%;
+  /* Position it below the button */
+  left: 50%;
+  /* Center it horizontally relative to the button */
+  transform: translateX(-50%);
+  /* Center it precisely */
+}
+
+.custombutton:hover .tooltip {
+  visibility: visible;
+}
