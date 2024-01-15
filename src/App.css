@@ -38,7 +38,6 @@
   }
 }
 
-/* src/App.css */
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
@@ -51,8 +50,6 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
-/* Add any additional global styling for your app */
-
 p {
   color: white
 }
@@ -63,14 +60,11 @@ p {
   padding-right: 10%;
   text-align: center;
   margin: 0 auto;
-  /* Center the container horizontally */
   max-width: 80%;
-  /* Adjust the max-width as needed */
 }
 
 #terminal {
   height: 100%;
-  /* Use 100% if preferred */
 }
 
 .xterm-dom-renderer-owner-1 {
@@ -91,7 +85,7 @@ p {
   margin: auto;
 }
 
-#request-port{
+#connect {
   color: #c58bc5;
   height: 30px;
   width: 30px;
@@ -99,10 +93,9 @@ p {
 }
 
 #clear{
-  color: #c58bc5;
+  color: white;
   height: 30px;
   width: 30px;
-  margin: auto;
 }
 
 #download{
@@ -118,11 +111,6 @@ p {
   margin-bottom: 20px;
 }
 
-.custombutton :hover{
- color: white;
-
-}
-
 .terminal-container {
   z-index: 9999;
 }
@@ -130,30 +118,101 @@ p {
 .custombutton {
   position: relative;
     margin: auto;
-  /* Set the button as a positioned container for the tooltip */
 }
 
 .custombutton .tooltip {
   visibility: hidden;
-  width: relative;
+  width: 120px;
   background-color: black;
   color: #fff;
   text-align: center;
   border-radius: 4px;
   padding: 3px;
-
-  /* Position the tooltip relative to the button */
   position: absolute;
   z-index: 1;
   font-size: small;
   top: 100%;
-  /* Position it below the button */
   left: 50%;
-  /* Center it horizontally relative to the button */
   transform: translateX(-50%);
-  /* Center it precisely */
 }
 
 .custombutton:hover .tooltip {
   visibility: visible;
+}
+
+.clearbutton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  padding: 10px;
+  position: absolute;
+  bottom: 133px;
+  right: 33px;
+  background-color: rgb(154, 25, 126);
+  transition: background-color 0.3s ease;
+  /* Add transition for background-color */
+}
+
+.clearbutton:hover #clear {
+  color: rgb(154, 25, 126);
+}
+
+.clearbutton:hover {
+  background-color: #c58bc5;
+}
+
+.clearbutton:active {
+  background-color: #a83da8;
+  /* Change the background color on click */
+}
+
+.connectbutton {
+  margin-top: 35%;
+  color: white;
+  background-color: rgb(154, 25, 126);
+  padding: 10px;
+  border-radius: 10px;
+  font-size: large;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.connectbutton:hover {
+  margin-top: 35%;
+  color: rgb(154, 25, 126);
+  background-color: #c58bc5;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: large;
+  font-weight: bold;
+}
+
+.connectbutton:hover #connect {
+  color: rgb(154, 25, 126);
+}
+
+.connectbutton #connect {
+  color: white;
+}
+
+.connect-container {
+  /* Add necessary styles for your container, e.g., height, width, display, etc. */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.connectbutton-text {
+  margin-bottom: 10px;
+}
+
+.hidden {
+  display: none;
+}
+
+.visible {
+  display: block;
 }

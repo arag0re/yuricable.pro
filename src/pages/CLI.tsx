@@ -1,12 +1,13 @@
-import React, { Component } from 'react'
+import { Component } from 'react'
 import { Terminal } from 'xterm'
 import { FitAddon } from 'xterm-addon-fit'
 import { WebLinksAddon } from 'xterm-addon-web-links'
 import 'xterm/css/xterm.css'
 import { TbPlugConnected } from 'react-icons/tb'
 import { GiBroom } from 'react-icons/gi'
-import { PiDownload } from 'react-icons/pi'
 import { TbPlugConnectedX } from 'react-icons/tb'
+import { BsFiletypeTxt } from 'react-icons/bs'
+import { takeCoverage } from 'v8'
 
 interface CLIState {
    isConnected: boolean
@@ -173,6 +174,11 @@ class CLI extends Component<{}, CLIState> {
             flowControl: 'none',
          })
          this.term.clear()
+         const terminalElement = document.getElementById('terminal')
+         if (terminalElement) {
+            terminalElement.classList.remove('hidded')
+            terminalElement.classList.add('visible')
+         }
          this.term.writeln('<CONNECTED>')
          this.setState({ isConnected: true })
       } catch (error) {
@@ -263,8 +269,13 @@ class CLI extends Component<{}, CLIState> {
             }
          }
       }
-
+      this.term.clear()
       this.markDisconnected()
+      const terminalElement = document.getElementById('terminal')
+      if (terminalElement) {
+         terminalElement.classList.add('hidden')
+         terminalElement.classList.remove('visible')
+      }
    }
 
    markDisconnected(): void {
@@ -277,12 +288,10 @@ class CLI extends Component<{}, CLIState> {
       if (!this.term) {
          throw new Error('no terminal instance found')
       }
-
       if (this.term.rows === 0) {
          console.log('No output yet')
          return
       }
-
       this.term.clear()
    }
 
@@ -292,38 +301,50 @@ class CLI extends Component<{}, CLIState> {
    render() {
       return (
          <div>
-            <div id="terminal" ref={(el) => (this.terminalElement = el)}></div>
-            <div id="bar">
-               {' '}
-               {this.state.isConnected ? (
-                  <button className="custombutton">
-                     <TbPlugConnectedX
-                        id="disconnect"
-                        onClick={this.disconnectFromPort}
-                     />
-                     <span className="tooltip">Disconnect</span>
+            {this.state.isConnected ? (
+               <>
+                  <div id="bar">
+                     <button className="custombutton">
+                        <TbPlugConnectedX
+                           id="disconnect"
+                           onClick={this.disconnectFromPort}
+                        />
+                        <span className="tooltip">Disconnect</span>
+                     </button>
+                     <button className="custombutton">
+                        <BsFiletypeTxt
+                           id="download"
+                           onClick={this.downloadTerminalContents}
+                        />
+                        <span className="tooltip">
+                           Download Terminal-Content
+                        </span>
+                     </button>
+                  </div>
+
+                  <button className="custombutton clearbutton">
+                     <GiBroom id="clear" onClick={this.clearTerminalContents} />
+                     <span className="tooltip">Clear Terminal</span>
                   </button>
-               ) : (
-                  <button className="custombutton">
-                     <TbPlugConnected
-                        id="request-port"
-                        onClick={this.requestAndOpenPort}
-                     />
-                     <span className="tooltip">Disconnect</span>
+               </>
+            ) : (
+               <div className="connect-container">
+                  <button
+                     className="custombutton connectbutton"
+                     onClick={this.requestAndOpenPort}
+                  >
+                     <TbPlugConnected id="connect" />
+                     <span className="connectbutton-text">
+                        Connect Flipper Zero
+                     </span>
                   </button>
-               )}
-               <button className="custombutton">
-                  <PiDownload
-                     id="download"
-                     onClick={this.downloadTerminalContents}
-                  />
-                  <span className="tooltip">Disconnect</span>
-               </button>
-               <button className="custombutton">
-                  <GiBroom id="clear" onClick={this.clearTerminalContents} />
-                  <span className="tooltip">Disconnect</span>
-               </button>
-            </div>
+               </div>
+            )}
+            <div
+               id="terminal"
+               className="hidden"
+               ref={(el) => (this.terminalElement = el)}
+            ></div>
          </div>
       )
    }
