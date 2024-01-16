@@ -8,7 +8,8 @@ const navbarStyle = {
    backgroundColor: '#c58bc5',
    padding: '1rem',
    color: 'white',
-   zIndex: 1
+   zIndex: 1,
+   overflow: 'hidden',
 }
 
 const logoStyle = {
@@ -37,7 +38,7 @@ class NavBarTop extends Component {
 
    render() {
       return (
-         <nav style={navbarStyle}>
+         <nav className="navbar" style={navbarStyle}>
             <div style={logoStyle}>
                <Link to="/">
                   <svg

@@ -41,6 +41,7 @@ export default class Credits extends Component {
    render() {
       const containerStyle = {
          margin: '0 10%',
+         marginTop: '100px',
       }
 
       const titleStyle = {
@@ -68,7 +69,7 @@ export default class Credits extends Component {
 
       return (
          <div className="web-serial-container" style={containerStyle}>
-            <h1 style={titleStyle}>Credits Page</h1>
+            <h1 style={titleStyle}>Credits</h1>
 
             <div style={contentStyle}>
                <h3>SDQ</h3>
