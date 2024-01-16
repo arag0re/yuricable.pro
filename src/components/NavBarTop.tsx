@@ -8,6 +8,7 @@ const navbarStyle = {
    backgroundColor: '#c58bc5',
    padding: '1rem',
    color: 'white',
+   zIndex: 1
 }
 
 const logoStyle = {

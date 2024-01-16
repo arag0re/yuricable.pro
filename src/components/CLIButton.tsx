@@ -20,12 +20,10 @@ class CLIButton extends Component<CLIButtonProps> {
       const { onClick } = this.props
 
       return (
-         <div>
-            <button className="clibutton clearbutton" onClick={onClick}>
-               {React.createElement(this.icon, { id: 'clear' })}
-               <span className="tooltip">{this.toolTipText}</span>
-            </button>
-         </div>
+         <button className="clibutton clearbutton" onClick={onClick}>
+            {React.createElement(this.icon, { id: 'clear' })}
+            <span className="tooltip">{this.toolTipText}</span>
+         </button>
       )
    }
 }
