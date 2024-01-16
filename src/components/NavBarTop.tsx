@@ -1,16 +1,43 @@
-// components/NavBar.js
+import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import '../css/NavBarTop.css'
-import { Component } from 'react'
 
-export default class NavBarTop extends Component {
+const navbarStyle = {
+   display: 'flex',
+   justifyContent: 'space-between',
+   alignItems: 'center',
+   backgroundColor: '#c58bc5',
+   padding: '1rem',
+   color: 'white',
+}
+
+const logoStyle = {
+   fontSize: '1.5rem',
+   fontWeight: 'bold',
+   size: '55px',
+}
+
+const navLinksStyle = {
+   listStyle: 'none',
+   display: 'flex',
+}
+
+const navLinkItemStyle = {
+   marginRight: '1rem',
+}
+
+const navLinkStyle = {
+   textDecoration: 'none',
+   color: 'white',
+}
+
+class NavBarTop extends Component {
    navLinks = [{ to: '/credits', text: 'Credits' }]
    linksToShow = navigator.serial ? [...this.navLinks] : this.navLinks
 
    render() {
       return (
-         <nav className="navbar">
-            <div className="logo">
+         <nav style={navbarStyle}>
+            <div style={logoStyle}>
                <Link to="/">
                   <svg
                      xmlns="http://www.w3.org/2000/svg"
@@ -70,10 +97,12 @@ export default class NavBarTop extends Component {
                   </svg>
                </Link>
             </div>
-            <ul className="nav-links">
+            <ul style={navLinksStyle}>
                {this.linksToShow.map((link, index) => (
-                  <li key={index}>
-                     <Link to={link.to}>{link.text}</Link>
+                  <li key={index} style={navLinkItemStyle}>
+                     <Link to={link.to} style={navLinkStyle}>
+                        {link.text}
+                     </Link>
                   </li>
                ))}
             </ul>
@@ -81,3 +110,5 @@ export default class NavBarTop extends Component {
       )
    }
 }
+
+export default NavBarTop

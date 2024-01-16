@@ -1,9 +1,9 @@
 // src/App.js
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
-import Home from './pages/CLI'
-import CLI from './pages/CLI'
-import Credits from './pages/Credits'
-import NavBarTop from './nav/NavBarTop'
+import Home from './components/CLI'
+import CLI from './components/CLI'
+import Credits from './components/Credits'
+import NavBarTop from './components/NavBarTop'
 import './App.css'
 
 

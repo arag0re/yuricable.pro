@@ -7,7 +7,7 @@ import { TbPlugConnected } from 'react-icons/tb'
 import { GiBroom } from 'react-icons/gi'
 import { TbPlugConnectedX } from 'react-icons/tb'
 import { BsFiletypeTxt } from 'react-icons/bs'
-import { takeCoverage } from 'v8'
+import CLIButton from './CLIButton'
 
 interface CLIState {
    isConnected: boolean
@@ -174,10 +174,9 @@ class CLI extends Component<{}, CLIState> {
             flowControl: 'none',
          })
          this.term.clear()
-         const terminalElement = document.getElementById('terminal')
-         if (terminalElement) {
-            terminalElement.classList.remove('hidded')
-            terminalElement.classList.add('visible')
+         if (this.terminalElement) {
+            this.terminalElement.classList.remove('hidded')
+            this.terminalElement.classList.add('visible')
          }
          this.term.writeln('<CONNECTED>')
          this.setState({ isConnected: true })
@@ -271,10 +270,9 @@ class CLI extends Component<{}, CLIState> {
       }
       this.term.clear()
       this.markDisconnected()
-      const terminalElement = document.getElementById('terminal')
-      if (terminalElement) {
-         terminalElement.classList.add('hidden')
-         terminalElement.classList.remove('visible')
+      if (this.terminalElement) {
+         this.terminalElement.classList.add('hidden')
+         this.terminalElement.classList.remove('visible')
       }
    }
 
@@ -298,35 +296,12 @@ class CLI extends Component<{}, CLIState> {
    onResize() {
       this.fitAddon.fit()
    }
+
    render() {
       return (
          <div>
             {this.state.isConnected ? (
-               <>
-                  <div id="bar">
-                     <button className="custombutton">
-                        <TbPlugConnectedX
-                           id="disconnect"
-                           onClick={this.disconnectFromPort}
-                        />
-                        <span className="tooltip">Disconnect</span>
-                     </button>
-                     <button className="custombutton">
-                        <BsFiletypeTxt
-                           id="download"
-                           onClick={this.downloadTerminalContents}
-                        />
-                        <span className="tooltip">
-                           Download Terminal-Content
-                        </span>
-                     </button>
-                  </div>
-
-                  <button className="custombutton clearbutton">
-                     <GiBroom id="clear" onClick={this.clearTerminalContents} />
-                     <span className="tooltip">Clear Terminal</span>
-                  </button>
-               </>
+               <></>
             ) : (
                <div className="connect-container">
                   <button
@@ -344,7 +319,29 @@ class CLI extends Component<{}, CLIState> {
                id="terminal"
                className="hidden"
                ref={(el) => (this.terminalElement = el)}
-            ></div>
+            >
+               <div id="disconnectbutton">
+                  <CLIButton
+                     icon={TbPlugConnectedX}
+                     onClick={this.disconnectFromPort}
+                     toolTipText="Disconnect"
+                  />
+               </div>
+               <div id="downloadbutton">
+                  <CLIButton
+                     icon={BsFiletypeTxt}
+                     onClick={this.downloadTerminalContents}
+                     toolTipText="Download"
+                  />
+               </div>
+               <div id="clearbutton">
+                  <CLIButton
+                     icon={GiBroom}
+                     onClick={this.clearTerminalContents}
+                     toolTipText="Clear Terminal"
+                  />
+               </div>
+            </div>
          </div>
       )
    }
