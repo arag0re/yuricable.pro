@@ -180,10 +180,6 @@ class CLI extends Component<{}, CLIState> {
       })
       port.addEventListener('disconnect', this.disconnectFromPort.bind(this))
       this.term.clear()
-      if (this.terminalElement) {
-         this.terminalElement.classList.remove('hidded')
-         this.terminalElement.classList.add('visible')
-      }
       this.fitAddon.fit()
       this.term.writeln('<CONNECTED>')
       this.setState({ port })
@@ -247,10 +243,6 @@ class CLI extends Component<{}, CLIState> {
       }
       this.term.clear()
       this.markDisconnected()
-      if (this.terminalElement) {
-         this.terminalElement.classList.add('hidden')
-         this.terminalElement.classList.remove('visible')
-      }
    }
 
    markDisconnected(): void {
@@ -349,7 +341,7 @@ class CLI extends Component<{}, CLIState> {
             )}
             <div
                id="terminal"
-               className="hidden"
+               className={!this.state.port ? 'hidden' : 'visible'}
                ref={(el) => (this.terminalElement = el)}
             />
          </>

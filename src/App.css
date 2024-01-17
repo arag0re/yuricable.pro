@@ -15,7 +15,7 @@ body {
 p {
     color: white
 }
-    
+
 
 #disconnect {
     color: #c58bc5;
@@ -97,50 +97,51 @@ p {
 
 #clear-button {
     position: relative;
-    top: 65vh;
+    top: 20vh;
     right: -45%;
 }
 
 #disconnect-button {
     position: relative;
-    top: 5vh;
+    top: 2.5vh;
     right: -45%;
 }
 
 #download-button {
     position: relative;
-    top: 62vh;
+    top: 4.5vh;
     right: -45%;
 }
 
 #start-button {
     position: relative;
     top: -12vh;
-    right: 48%;
+    right: 45%;
 }
 
 #stop-button {
     position: relative;
     top: -10vh;
-    right: 48%;
+    right: 45%;
+    padding: 10px
 }
 
 #dcsd-button {
     position: relative;
     top: -8vh;
-    right: 48%;
+    right: 45%;
 }
 
 #reset-button {
     position: relative;
     top: -6vh;
-    right: 48%;
+    right: 45%;
 }
 
 #dfu-button {
     position: relative;
     top: -4vh;
-    right: 48%;
+    right: 45%;
 }
 
 .clearbutton:hover #clear {
@@ -205,4 +206,9 @@ p {
 
 .navbar a {
     margin-right: 15px; 
+}
+
+.terminal {
+    padding: 10%;
+    min-width: 500px;
 }
