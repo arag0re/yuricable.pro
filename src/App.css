@@ -15,10 +15,7 @@ body {
 p {
     color: white
 }
-
-.xterm-dom-renderer-owner-1 {
-    display: none;
-}
+    
 
 #disconnect {
     color: #c58bc5;
