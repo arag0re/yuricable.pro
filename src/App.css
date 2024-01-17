@@ -116,6 +116,36 @@ p {
     right: -45%;
 }
 
+#start-button {
+    position: relative;
+    top: -12vh;
+    right: 48%;
+}
+
+#stop-button {
+    position: relative;
+    top: -10vh;
+    right: 48%;
+}
+
+#dcsd-button {
+    position: relative;
+    top: -8vh;
+    right: 48%;
+}
+
+#reset-button {
+    position: relative;
+    top: -6vh;
+    right: 48%;
+}
+
+#dfu-button {
+    position: relative;
+    top: -4vh;
+    right: 48%;
+}
+
 .clearbutton:hover #clear {
     color: rgb(154, 25, 126);
 }

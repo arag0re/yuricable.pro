@@ -2,12 +2,12 @@ import React, {Component} from "react"
 import type {IconType} from "react-icons"
 import {HTMLProps} from "../App";
 
-type CLIButtonProps = {
+export type CLIButtonProps = {
     icon: IconType
     toolTipText: string
 }
 
-class CLIButton extends Component<HTMLProps<CLIButtonProps, HTMLButtonElement>> {
+export default class CLIButton extends Component<HTMLProps<CLIButtonProps, HTMLButtonElement>> {
 
     render() {
         return (
@@ -18,5 +18,3 @@ class CLIButton extends Component<HTMLProps<CLIButtonProps, HTMLButtonElement>> 
         )
     }
 }
-
-export default CLIButton

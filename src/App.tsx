@@ -4,9 +4,9 @@ import CLI from "./components/CLI"
 import Credits from "./components/Credits"
 import NavBarTop from "./components/NavBarTop"
 import "./App.css"
-import {DetailedHTMLProps, HTMLAttributes} from "react";
+import {DetailedHTMLProps, HTMLAttributes, PropsWithRef} from "react";
 
-export type HTMLProps<E, T> = E & DetailedHTMLProps<HTMLAttributes<T>, T>
+export type HTMLProps<E, T> = PropsWithRef<E & DetailedHTMLProps<HTMLAttributes<T>, T>>
 
 function App() {
     const isWebSerialCompatible: boolean = navigator.serial ? true : false

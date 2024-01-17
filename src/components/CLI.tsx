@@ -6,7 +6,11 @@ import "xterm/css/xterm.css"
 import {TbPlugConnected, TbPlugConnectedX} from "react-icons/tb"
 import CLIButton from "./CLIButton";
 import {BsFiletypeTxt} from "react-icons/bs";
-import {GiBroom} from "react-icons/gi";
+import {GiBroom, GiPauseButton, GiPlayButton} from "react-icons/gi";
+import CLICommandButton from "./CLICommandButton";
+import {AiFillCode} from "react-icons/ai";
+import {MdOutlineLockReset} from "react-icons/md";
+import {LuTimerReset} from "react-icons/lu";
 
 declare global {
     interface SerialPortInfo {
@@ -193,8 +197,6 @@ class CLI extends Component<{}, CLIState> {
                     while (true) {
                         const {value, done} = await reader.read()
 
-                        console.log(value, done)
-
                         if (value) {
                             await new Promise<void>((resolve) => {
                                 this.term.write(value, resolve)
@@ -310,6 +312,41 @@ class CLI extends Component<{}, CLIState> {
                             icon={GiBroom}
                             onClick={this.clearTerminalContents}
                             toolTipText="Clear Terminal"
+                        />
+                        <CLICommandButton
+                            id="start-button"
+                            icon={GiPlayButton}
+                            command={"start"}
+                            port={this.state.port}
+                            toolTipText="Start Listening"
+                        />
+                        <CLICommandButton
+                            id="stop-button"
+                            icon={GiPauseButton}
+                            command={"stop"}
+                            port={this.state.port}
+                            toolTipText="Stop Listening"
+                        />
+                        <CLICommandButton
+                            id="dcsd-button"
+                            icon={AiFillCode}
+                            command={"mode dcsd"}
+                            port={this.state.port}
+                            toolTipText="Mode DCSD - Bootlog"
+                        />
+                        <CLICommandButton
+                            id="reset-button"
+                            icon={LuTimerReset}
+                            command={"mode reset"}
+                            port={this.state.port}
+                            toolTipText="Mode Reset"
+                        />
+                        <CLICommandButton
+                            id="dfu-button"
+                            icon={MdOutlineLockReset}
+                            command={"mode dfu"}
+                            port={this.state.port}
+                            toolTipText="Mode DFU"
                         />
                     </div>
                 }
