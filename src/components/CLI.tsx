@@ -321,7 +321,7 @@ class CLI extends Component<{}, CLIState> {
                      icon={AiFillCode}
                      command={'mode dcsd'}
                      port={this.state.port}
-                     toolTipText="Mode DCSD - Bootlog"
+                     toolTipText="Bootlog - DCSD"
                   />
                   <CLICommandButton
                      id="reset-button"
