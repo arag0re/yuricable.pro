@@ -1,16 +1,19 @@
-import React, { Component } from 'react'
+import { Component } from 'react'
 import { Link } from 'react-router-dom'
+import styled from 'styled-components'
 
-const navbarStyle = {
-   display: 'flex',
-   justifyContent: 'space-between',
-   alignItems: 'center',
-   backgroundColor: '#c58bc5',
-   padding: '1rem',
-   color: 'white',
-   zIndex: 1,
-   overflow: 'hidden',
-}
+const StyledNav = styled.nav`
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   background-color: rgb(197, 139, 197);
+   padding: 1rem;
+   color: white;
+   z-index: 1;
+   overflow: hidden;
+   position: sticky;
+   top: 0;
+`
 
 const logoStyle = {
    fontSize: '1.5rem',
@@ -38,7 +41,7 @@ class NavBarTop extends Component {
 
    render() {
       return (
-         <nav className="navbar" style={navbarStyle}>
+         <StyledNav className="navbar">
             <div style={logoStyle}>
                <Link to="/">
                   <svg
@@ -108,7 +111,7 @@ class NavBarTop extends Component {
                   </li>
                ))}
             </ul>
-         </nav>
+         </StyledNav>
       )
    }
 }

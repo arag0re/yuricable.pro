@@ -1,5 +1,13 @@
 import { Component } from 'react'
+import styled from 'styled-components'
 
+const StyledCreditContainer = styled.nav`
+   overflow-x: scroll;
+   max-height: 100%;
+   max-width: 100%;
+   padding: 100px 10% 100px;
+   margin-bottom: 10%;
+`
 export default class Credits extends Component {
    selectedVideo: string | null
    constructor(props: any) {
@@ -12,6 +20,7 @@ export default class Credits extends Component {
          width: '100%',
          height: '674px',
          margin: '20px auto 20px',
+         border: 'none',
       }
       return (
          <div>
@@ -68,7 +77,7 @@ export default class Credits extends Component {
       }
 
       return (
-         <div className="web-serial-container" style={containerStyle}>
+         <StyledCreditContainer className="web-serial-container">
             <h1 style={titleStyle}>Credits</h1>
 
             <div style={contentStyle}>
@@ -220,7 +229,7 @@ export default class Credits extends Component {
                   </li>
                </ul>
             </div>
-         </div>
+         </StyledCreditContainer>
       )
    }
 }

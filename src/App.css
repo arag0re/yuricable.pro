@@ -189,7 +189,6 @@ p {
 }
 
 .connect-container {
-    /* Add necessary styles for your container, e.g., height, width, display, etc. */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -208,5 +207,5 @@ p {
 }
 
 .navbar a {
-    margin-right: 15px;
+    margin-right: 15px; 
 }
