@@ -48,11 +48,6 @@ export default class Credits extends Component {
    }
 
    render() {
-      const containerStyle = {
-         margin: '0 10%',
-         marginTop: '100px',
-      }
-
       const titleStyle = {
          color: 'white',
          fontSize: '2em',
