@@ -23,7 +23,7 @@ export default class IncompatibleBrowser extends Component {
             </p>
             <p>
                We recommend using the latest version of a Chromium Based Browser
-               like: Microsoft Edge or Google Chrome
+               like: Microsoft Edge or Brave Browser
             </p>
             <p>
                If you believe this message is an error, please ensure your

@@ -4,7 +4,6 @@ jobs:
    cleanup:
       runs-on: ubuntu-latest
       permissions: write-all
-
       steps:
          - name: 🗑 Delete deployment
            uses: strumwolf/delete-deployment-environment@v2
@@ -34,7 +33,7 @@ jobs:
    # Deploy Job
    deploy:
       # Add a dependency to the build job
-      needs: cleanup
+      needs: build
       # Specify runner + deployment step
       runs-on: ubuntu-latest
       steps:
