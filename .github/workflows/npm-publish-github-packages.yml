@@ -9,7 +9,7 @@ jobs:
          - name: 🗑 Delete deployment
            uses: strumwolf/delete-deployment-environment@v2
            with:
-              token: ${{ secrets.CI_CD_TOKEN }}
+              token: ${{ secrets.TOKEN }}
               environment: github-pages
               onlyRemoveDeployments: true
    # Build Job
@@ -46,5 +46,5 @@ jobs:
          - name: Deploy to GitHub Pages
            uses: peaceiris/actions-gh-pages@v3
            with:
-              github_token: ${{ secrets.CI_CD_TOKEN }}
+              github_token: ${{ secrets.TOKEN }}
               publish_dir: ./build
