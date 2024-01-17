@@ -9,7 +9,7 @@ jobs:
          - name: 🗑 Delete deployment
            uses: strumwolf/delete-deployment-environment@v2
            with:
-              token: ${{ secrets.GITHUB_TOKEN }}
+              token: ${{ secrets.CI_CD_TOKEN }}
               environment: github-pages
               onlyRemoveDeployments: true
    # Build Job
