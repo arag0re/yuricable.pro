@@ -16,85 +16,6 @@ p {
     color: white
 }
 
-
-#disconnect {
-    color: #c58bc5;
-    height: 30px;
-    width: 30px;
-}
-
-#connect {
-    color: #c58bc5;
-    height: 30px;
-    width: 30px;
-}
-
-#clear {
-    color: white;
-    height: 30px;
-    width: 30px;
-}
-
-#download {
-    color: #c58bc5;
-    height: 30px;
-    width: 30px;
-}
-
-#terminal {
-    height: 88vh;
-}
-
-.clibutton {
-    background-color: rgb(55, 35, 61);
-    border: none;
-    box-shadow: 2px 2px 5px rgba(255, 255, 255, 0.66);
-}
-
-.clibutton {
-    position: relative;
-    margin: auto;
-}
-
-.clibutton .tooltip {
-    visibility: hidden;
-    width: 120px;
-    background-color: black;
-    color: #fff;
-    text-align: center;
-    border-radius: 4px;
-    padding: 3px;
-    position: absolute;
-    z-index: 1;
-    font-size: small;
-    top: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-.clibutton:hover .tooltip {
-    visibility: visible;
-}
-
-.clibutton {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    padding: 10px;
-    z-index: 1;
-    background-color: rgb(154, 25, 126);
-    transition: background-color 0.3s ease;
-    /* Add transition for background-color */
-}
-
-#button-container {
-    position: absolute;
-    width: 100%;
-}
-
 #clear-button {
     position: relative;
     top: 20vh;
@@ -144,58 +65,6 @@ p {
     right: 45%;
 }
 
-.clearbutton:hover #clear {
-    color: rgb(154, 25, 126);
-}
-
-.clearbutton:hover {
-    background-color: #c58bc5;
-    box-shadow: 2px 2px 5px rgba(255, 255, 255, 0);
-}
-
-.clearbutton:active {
-    background-color: #a83da8;
-    /* Change the background color on click */
-}
-
-.connectbutton {
-    margin-top: 35%;
-    color: white;
-    background-color: rgb(154, 25, 126);
-    padding: 10px;
-    border-radius: 10px;
-    font-size: large;
-    font-weight: bold;
-    transition: background-color 0.3s ease;
-}
-
-.connectbutton:hover {
-    color: rgb(154, 25, 126);
-    background-color: #c58bc5;
-    padding: 10px;
-    border-radius: 10px;
-    font-size: large;
-    font-weight: bold;
-}
-
-.connectbutton:hover #connect {
-    color: rgb(154, 25, 126);
-}
-
-.connectbutton #connect {
-    color: white;
-}
-
-.connect-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.connectbutton-text {
-    margin-bottom: 10px;
-}
-
 .hidden {
     display: none;
 }
@@ -206,10 +75,4 @@ p {
 
 .navbar a {
     margin-right: 15px; 
-}
-
-.terminal {
-    padding-left: 10%;
-    padding-right: 10%;
-    min-width: 500px;
 }

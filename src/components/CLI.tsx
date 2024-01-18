@@ -11,6 +11,52 @@ import CLICommandButton from './CLICommandButton'
 import { AiFillCode } from 'react-icons/ai'
 import { MdOutlineLockReset } from 'react-icons/md'
 import { LuTimerReset } from 'react-icons/lu'
+import styled from 'styled-components'
+
+const StyledTerminal = styled.div`
+   padding-left: 10%;
+   padding-right: 10%;
+   min-width: 500px;
+   height: 88vh;
+   background-color: black;
+`
+
+const StyledButtonContainer = styled.div`
+   position: absolute;
+   width: 100%;
+`
+const StyledConnectContainer = styled.div`
+   display: flex;
+   justify-content: center;
+   align-items: center;
+`
+
+const StyledConnectButton = styled.button`
+   margin-top: 35%;
+   color: #c58bc5;
+   background-color: rgb(154, 25, 126);
+   padding: 10px;
+   border: 1px solid #c58bc5;
+   border-radius: 10px;
+   font-size: large;
+   font-weight: bold;
+   transition: background-color 0.3s ease;
+   font-family: 'Boodle', sans-serif;
+
+   &:hover {
+      color: rgb(154, 25, 126);
+      border-color: rgb(154, 25, 126);
+      background-color: #c58bc5;
+   }
+
+   & #connect-icon {
+      color: #c58bc5;
+   }
+
+   &:hover #connect-icon {
+      color: rgb(154, 25, 126);
+   }
+`
 
 declare global {
    interface SerialPortInfo {
@@ -270,21 +316,21 @@ class CLI extends Component<{}, CLIState> {
       window.onresize = this.onResize
       return (
          <>
-            <style>{"body {overflow: hidden;}"}</style>
-                {!this.state.port ?(
-               <div className="connect-container">
-                  <button
-                     className="custombutton connectbutton"
+            <style>{'body {overflow: hidden;}'}</style>
+            {!this.state.port ? (
+               <StyledConnectContainer>
+                  <StyledConnectButton
+                     className="connectbutton"
                      onClick={this.requestAndOpenPort}
                   >
-                     <TbPlugConnected id="connect" />
+                     <TbPlugConnected id="connect-icon" />
                      <span className="connectbutton-text">
                         Connect Flipper Zero
                      </span>
-                  </button>
-               </div>
+                  </StyledConnectButton>
+               </StyledConnectContainer>
             ) : (
-               <div id="button-container">
+               <StyledButtonContainer>
                   <CLIButton
                      id="disconnect-button"
                      icon={TbPlugConnectedX}
@@ -338,9 +384,9 @@ class CLI extends Component<{}, CLIState> {
                      port={this.state.port}
                      toolTipText="Mode DFU"
                   />
-               </div>
+               </StyledButtonContainer>
             )}
-            <div
+            <StyledTerminal
                id="terminal"
                className={!this.state.port ? 'hidden' : 'visible'}
                ref={(el) => (this.terminalElement = el)}

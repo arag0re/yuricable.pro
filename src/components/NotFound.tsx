@@ -7,6 +7,7 @@ const StyledNotFound = styled.div`
    border: 1px solid blue;
    border-radius: 5px;
    text-align: center;
+   font-family: 'Boodle', sans-serif;
 `
 
 export default class NotFound extends Component {

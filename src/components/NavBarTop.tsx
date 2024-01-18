@@ -13,22 +13,23 @@ const StyledNav = styled.nav`
    overflow: hidden;
    position: sticky;
    top: 0;
+   font-family: 'Boodle', sans-serif;
 `
 
-const logoStyle = {
-   fontSize: '1.5rem',
-   fontWeight: 'bold',
-   size: '55px',
-}
+const StyledLogo = styled.div`
+   fontsize: '1.5rem';
+   fontweight: 'bold';
+   size: '55px';
+`
 
-const navLinksStyle = {
-   listStyle: 'none',
-   display: 'flex',
-}
+const StyledNavList = styled.ul`
+   list-style: none;
+   display: 'flex';
+`
 
-const navLinkItemStyle = {
-   marginRight: '1rem',
-}
+const StyledNavListItem = styled.li`
+   marginright: '1rem';
+`
 
 const navLinkStyle = {
    textDecoration: 'none',
@@ -42,7 +43,7 @@ class NavBarTop extends Component {
    render() {
       return (
          <StyledNav className="navbar">
-            <div style={logoStyle}>
+            <StyledLogo>
                <Link to="/">
                   <svg
                      xmlns="http://www.w3.org/2000/svg"
@@ -101,16 +102,16 @@ class NavBarTop extends Component {
                      </g>
                   </svg>
                </Link>
-            </div>
-            <ul style={navLinksStyle}>
+            </StyledLogo>
+            <StyledNavList>
                {this.linksToShow.map((link, index) => (
-                  <li key={index} style={navLinkItemStyle}>
+                  <StyledNavListItem key={index}>
                      <Link to={link.to} style={navLinkStyle}>
                         {link.text}
                      </Link>
-                  </li>
+                  </StyledNavListItem>
                ))}
-            </ul>
+            </StyledNavList>
          </StyledNav>
       )
    }
