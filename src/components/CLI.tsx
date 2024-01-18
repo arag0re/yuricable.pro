@@ -270,7 +270,8 @@ class CLI extends Component<{}, CLIState> {
       window.onresize = this.onResize
       return (
          <>
-            {!this.state.port ? (
+            <style>{"body {overflow: hidden;}"}</style>
+                {!this.state.port ?(
                <div className="connect-container">
                   <button
                      className="custombutton connectbutton"
