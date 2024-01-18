@@ -1,13 +1,14 @@
 {
   "files": {
-    "main.css": "/static/css/main.acea1625.css",
-    "main.js": "/static/js/main.8ddd28a2.js",
+    "main.css": "/static/css/main.b18bd155.css",
+    "main.js": "/static/js/main.54394b67.js",
+    "static/media/Boodle-Regular.otf": "/static/media/Boodle-Regular.01323362459f9acfc963.otf",
     "index.html": "/index.html",
-    "main.acea1625.css.map": "/static/css/main.acea1625.css.map",
-    "main.8ddd28a2.js.map": "/static/js/main.8ddd28a2.js.map"
+    "main.b18bd155.css.map": "/static/css/main.b18bd155.css.map",
+    "main.54394b67.js.map": "/static/js/main.54394b67.js.map"
   },
   "entrypoints": [
-    "static/css/main.acea1625.css",
-    "static/js/main.8ddd28a2.js"
+    "static/css/main.b18bd155.css",
+    "static/js/main.54394b67.js"
   ]
 }
