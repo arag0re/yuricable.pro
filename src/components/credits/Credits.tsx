@@ -98,7 +98,7 @@ export default class Credits extends Component {
                         <SocialsButton
                            svgActive={discordSvg}
                            svgInactive={discordSvgBlack}
-                           href="https://discord.gg/link"
+                           href="https://discord.gg/flipper"
                            altText="Flipper Discord"
                            tooltipText="Flipper Discord"
                         />
