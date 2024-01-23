@@ -1,5 +1,14 @@
 import { Component } from 'react'
 import styled from 'styled-components'
+import discordSvg from '../../assets/discord.svg'
+import discordSvgBlack from '../../assets/discord_black.svg'
+import twitterSvg from '../../assets/twitter.svg'
+import twitterSvgBlack from '../../assets/twitter_black.svg'
+import qFlipperImg from '../../assets/qFlipper_macOS_256px.png'
+import qFlipperImgBlack from '../../assets/qFlipper_black_macOS_256px.png'
+import githubSvg from '../../assets/github.svg'
+import githubSvgBlack from '../../assets/github_black.svg'
+import SocialsButton from './SocialsButton'
 
 const StyledCreditContainer = styled.nav`
    max-height: 100%;
@@ -77,6 +86,65 @@ export default class Credits extends Component {
             <h1 style={titleStyle}>Credits</h1>
 
             <div style={contentStyle}>
+               <h3>Flipper Devices Inc.</h3>
+               <p>
+                  Thanks to Flipper Devices Inc. for developing and releasing
+                  the Flipper Zero of course and also thanks to the very helpful
+                  discord-community! ❤️
+               </p>
+               <div className="socials-section">
+                  <ul className="socials-list">
+                     <li>
+                        <SocialsButton
+                           svgActive={discordSvg}
+                           svgInactive={discordSvgBlack}
+                           href="https://discord.gg/link"
+                           altText="Flipper Discord"
+                           tooltipText="Flipper Discord"
+                        />
+                     </li>
+                     <li>
+                        <SocialsButton
+                           svgActive={qFlipperImg}
+                           svgInactive={qFlipperImgBlack}
+                           href="https://flipperzero.one/"
+                           altText="Flipper Devices Inc. Website"
+                           tooltipText="Flipper Devices Inc. Website"
+                        />
+                     </li>
+                     <li>
+                        <SocialsButton
+                           svgActive={githubSvg}
+                           svgInactive={githubSvgBlack}
+                           href="https://github.com/flipperdevices"
+                           altText="Flipper Devices GitHub"
+                           tooltipText="Flipper Devices GitHub"
+                        />
+                     </li>
+                  </ul>
+                  Espeacially thanks to{' '}
+                  <a
+                     style={linkStyle}
+                     href="https://twitter.com/l33tbunni"
+                     target="_blank"
+                     rel="noopener noreferrer"
+                  >
+                     @l33tbunni
+                  </a>{' '}
+                  from the Flipper Discord for beeing so supportive!
+                  <ul className="socials-list">
+                     <li>
+                        <SocialsButton
+                           svgActive={twitterSvg}
+                           svgInactive={twitterSvgBlack}
+                           href="https://twitter.com/l33tbunni"
+                           altText="l33tbunni Twitter"
+                           tooltipText="Check l33tbunni out on Twitter"
+                        />
+                     </li>
+                  </ul>
+               </div>
+
                <h3>SDQ</h3>
                <ul>
                   <li>
@@ -110,6 +178,7 @@ export default class Credits extends Component {
                   </a>
                </p>
             </div>
+
             <div style={contentStyle}>
                <h3>SDQ Analyzer & Protocol Decoder for Logic2</h3>
                <ul>

@@ -76,3 +76,20 @@ p {
 .navbar a {
     margin-right: 15px; 
 }
+
+
+.socials-section {
+    text-align: center;
+}
+
+.socials-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.socials-list li {
+    display: inline-block;
+}
