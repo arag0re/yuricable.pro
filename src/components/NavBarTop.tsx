@@ -28,6 +28,7 @@ const StyledNavList = styled.ul`
    display: flex;
    align-items: center;
    margin-right: 60px;
+   margin-left: 60px;
    padding: 0;
 `
 
