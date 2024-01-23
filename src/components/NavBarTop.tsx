@@ -1,4 +1,5 @@
 import { Component } from 'react'
+import GithubCorner from 'react-github-corner'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
@@ -14,17 +15,18 @@ const StyledNav = styled.nav`
    position: sticky;
    top: 0;
    font-family: 'Boodle', sans-serif;
+   fontsize: '1.5rem';
+   fontweight: 'bold';
 `
 
 const StyledLogo = styled.div`
-   fontsize: '1.5rem';
-   fontweight: 'bold';
    size: '55px';
 `
 
 const StyledNavList = styled.ul`
    list-style: none;
    display: 'flex';
+   margin-right: 60px;
 `
 
 const StyledNavListItem = styled.li`
@@ -111,6 +113,13 @@ class NavBarTop extends Component {
                      </Link>
                   </StyledNavListItem>
                ))}
+               <GithubCorner
+                  size="100px"
+                  bannerColor="rgb(154, 25, 126)"
+                  octoColor="rgb(197, 139, 197)"
+                  ariaLabel="View Sourcecode on GitHub"
+                  href="https://github.com/arag0re/yuricable.pro"
+               />
             </StyledNavList>
          </StyledNav>
       )
