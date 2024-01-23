@@ -25,8 +25,10 @@ const StyledLogo = styled.div`
 
 const StyledNavList = styled.ul`
    list-style: none;
-   display: 'flex';
+   display: flex;
+   align-items: center;
    margin-right: 60px;
+   padding: 0;
 `
 
 const StyledNavListItem = styled.li`
@@ -114,7 +116,7 @@ class NavBarTop extends Component {
                   </StyledNavListItem>
                ))}
                <GithubCorner
-                  size="100px"
+                  size="83px"
                   bannerColor="rgb(154, 25, 126)"
                   octoColor="rgb(197, 139, 197)"
                   ariaLabel="View Sourcecode on GitHub"
