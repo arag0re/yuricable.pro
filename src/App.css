@@ -77,7 +77,6 @@ p {
     margin-right: 15px; 
 }
 
-
 .socials-section {
     text-align: center;
 }
@@ -98,4 +97,15 @@ p {
 
 .socials-list li {
     display: inline-block;
+}
+
+.pcb-container {
+    position: relative;
+}
+
+.pcb-github-button{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding: 10px;
 }

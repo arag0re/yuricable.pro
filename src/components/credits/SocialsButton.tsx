@@ -37,6 +37,7 @@ export type SocialsButtonProps = {
    href: string
    altText: string
    tooltipText: string
+   className?: string
 }
 
 export default class SocialsButton extends Component<
@@ -52,12 +53,13 @@ export default class SocialsButton extends Component<
    }
 
    render() {
-      const { svgActive, svgInactive, href, altText, tooltipText } = this.props
+      const { svgActive, svgInactive, href, altText, tooltipText, className } =
+         this.props
       const { hover } = this.state
 
       return (
          <StyledSocialsButton
-            className="socials-button"
+            className={`socials-button ${className || ''}`}
             onMouseEnter={this.toggleHover}
             onMouseLeave={this.toggleHover}
             href={href}
