@@ -17,6 +17,11 @@ const StyledCreditContainer = styled.nav`
    margin-bottom: 10%;
    font-family: 'Boodle', sans-serif;
 `
+
+const StyledYTList = styled.ul`
+   list-style: none;
+`
+
 export default class Credits extends Component {
    constructor(props: any) {
       super(props)
@@ -224,7 +229,7 @@ export default class Credits extends Component {
                   on the subject.
                </p>
                <p>Here is a list of his talks on YouTube:</p>
-               <ul>
+               <StyledYTList>
                   <li>
                      <details style={linkStyle}>
                         <summary>
@@ -268,7 +273,7 @@ export default class Credits extends Component {
                         {this.embedYouTubeVideo('D8UGlvBubkA')}
                      </details>
                   </li>
-               </ul>
+               </StyledYTList>
             </div>
          </StyledCreditContainer>
       )
