@@ -90,6 +90,11 @@ p {
     gap: 20px;
 }
 
+#altium-iframe {
+    width: 100%;
+    height: 500px;
+}
+
 .socials-list li {
     display: inline-block;
 }
