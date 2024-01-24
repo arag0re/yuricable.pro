@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.84f88dde.css",
-    "main.js": "/static/js/main.fbc0ec31.js",
+    "main.css": "/static/css/main.223135a6.css",
+    "main.js": "/static/js/main.57cd02d2.js",
     "static/media/Boodle-Regular.otf": "/static/media/Boodle-Regular.01323362459f9acfc963.otf",
     "static/media/twitter.svg": "/static/media/twitter.a6f77dced5e5575b537cf682a7137e0a.svg",
     "static/media/twitter_black.svg": "/static/media/twitter_black.522fa912d6d2cb0353ab37b380b66d1b.svg",
@@ -9,12 +9,14 @@
     "static/media/github_black.svg": "/static/media/github_black.922b07090b00e98b162d0077112f47d2.svg",
     "static/media/discord.svg": "/static/media/discord.61d53db1792b72466025725963a88fbb.svg",
     "static/media/discord_black.svg": "/static/media/discord_black.d3d5ed3613ca486ca4b2dad427f2863e.svg",
+    "static/media/youtube_black.svg": "/static/media/youtube_black.1636b756254659f0c21bab2a47d79f4f.svg",
+    "static/media/youtube_red.svg": "/static/media/youtube_red.7feb61de264ef4daa3148bdc81449c3b.svg",
     "index.html": "/index.html",
-    "main.84f88dde.css.map": "/static/css/main.84f88dde.css.map",
-    "main.fbc0ec31.js.map": "/static/js/main.fbc0ec31.js.map"
+    "main.223135a6.css.map": "/static/css/main.223135a6.css.map",
+    "main.57cd02d2.js.map": "/static/js/main.57cd02d2.js.map"
   },
   "entrypoints": [
-    "static/css/main.84f88dde.css",
-    "static/js/main.fbc0ec31.js"
+    "static/css/main.223135a6.css",
+    "static/js/main.57cd02d2.js"
   ]
 }
