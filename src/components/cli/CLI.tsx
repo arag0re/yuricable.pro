@@ -245,6 +245,7 @@ class CLI extends Component<{}, CLIState> {
                console.error(e)
                await new Promise<void>((resolve) => {
                   if (e instanceof Error) {
+                     this.disconnectFromPort()
                      this.term.writeln(`<ERROR: ${e.message}>`, resolve)
                   }
                })
