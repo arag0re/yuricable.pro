@@ -35,9 +35,9 @@ export default class IncompatibleBrowser extends Component {
                like: Microsoft Edge or Brave Browser
             </p>
             <p>Meanwhile you can look at our cool PCB!</p>
-            <div className='pcb-container'>
+            <div className="pcb-container">
                <iframe
-                  title="altium"
+                  title="Altium Viewer YuriCable Pro Max PCB v1.0"
                   id="altium-iframe"
                   src="https://personal-viewer.365.altium.com/client/index.html?feature=embed&source=F7968924-074A-413F-852B-0C0A28F65F61&activeView=PCB"
                   allowFullScreen

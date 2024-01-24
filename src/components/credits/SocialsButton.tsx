@@ -2,16 +2,22 @@ import React, { Component } from 'react'
 import styled from 'styled-components'
 
 const StyledSocialsButton = styled.a`
+   opacity: 0.3;
    .socials-logo {
       transition: transform 0.8s ease-in-out;
    }
 
-   &:hover .socials-tooltip {
-      visibility: visible;
-   }
+   &:hover {
+      opacity: 1;
 
-   &:hover .socials-logo {
-      transform: rotate(360deg);
+      .socials-tooltip {
+         visibility: visible;
+         opacity: 1;
+      }
+
+      .socials-logo {
+         transform: rotate(360deg);
+      }
    }
 `
 
@@ -29,6 +35,7 @@ const StyledToolTip = styled.span`
    margin-top: 50px;
    transform: translateX(-60%);
    font-family: 'Boodle', sans-serif;
+   opacity: 1;
 `
 
 export type SocialsButtonProps = {
