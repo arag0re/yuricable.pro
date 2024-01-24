@@ -31,7 +31,7 @@ export default class IncompatibleBrowser extends Component {
                We recommend using the latest version of a Chromium Based Browser
                like: Microsoft Edge or Brave Browser
             </p>
-            <p>Meanwhile you can look at out cool PCB!</p>
+            <p>Meanwhile you can look at our cool PCB!</p>
             <iframe
                title="altium"
                id="altium-iframe"
