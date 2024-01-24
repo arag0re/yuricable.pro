@@ -18,11 +18,11 @@ const StyledCreditContainer = styled.nav`
    font-family: 'Boodle', sans-serif;
 `
 export default class Credits extends Component {
-   selectedVideo: string | null
-
    constructor(props: any) {
       super(props)
-      this.selectedVideo = null
+      this.state = {
+         selectedVideo: null,
+      }
    }
 
    embedYouTubeVideo(videoId: string) {
@@ -42,19 +42,6 @@ export default class Credits extends Component {
             ></iframe>
          </div>
       )
-   }
-
-   toggleVideo(videoId: string) {
-      if (this.selectedVideo === videoId) {
-         this.selectedVideo = null
-      } else {
-         this.selectedVideo = videoId
-         const linksContainer = document.getElementById('videoLinks')
-         if (linksContainer) {
-            linksContainer.scrollTop = linksContainer.scrollHeight
-         }
-      }
-      this.forceUpdate()
    }
 
    render() {
@@ -123,7 +110,7 @@ export default class Credits extends Component {
                      </li>
                   </ul>
                </div>
-               Espeacially thanks to{' '}
+               Especially thanks to{' '}
                <a
                   style={linkStyle}
                   href="https://twitter.com/l33tbunni"
@@ -239,57 +226,47 @@ export default class Credits extends Component {
                <p>Here is a list of his talks on YouTube:</p>
                <ul>
                   <li>
-                     <span
-                        style={linkStyle}
-                        onClick={() => this.toggleVideo('8p3Oi4DL0eI')}
-                     >
-                        The Hitchhacker’s Guide to iPhone Lightning and JTAG
-                        Hacking
-                     </span>
-                     {this.selectedVideo === '8p3Oi4DL0eI' &&
-                        this.embedYouTubeVideo('8p3Oi4DL0eI')}
+                     <details style={linkStyle}>
+                        <summary>
+                           The Hitchhacker’s Guide to iPhone Lightning and JTAG
+                           Hacking
+                        </summary>
+                        {this.embedYouTubeVideo('8p3Oi4DL0eI')}
+                     </details>
                   </li>
                   <li>
-                     <span
-                        style={linkStyle}
-                        onClick={() => this.toggleVideo('vmQcrU5pNvU')}
-                     >
-                        Inside Apple's Lightning: JTAGging The iPhone For
-                        Fuzzing And Profit
-                     </span>
-                     {this.selectedVideo === 'vmQcrU5pNvU' &&
-                        this.embedYouTubeVideo('vmQcrU5pNvU')}
+                     <details style={linkStyle}>
+                        <summary>
+                           Inside Apple's Lightning: JTAGging The iPhone For
+                           Fuzzing And Profit
+                        </summary>
+                        {this.embedYouTubeVideo('vmQcrU5pNvU')}
+                     </details>
                   </li>
                   <li>
-                     <span
-                        style={linkStyle}
-                        onClick={() => this.toggleVideo('-nFWcKHIUN4')}
-                     >
-                        Stacksmashing- Inside Apple’s Lightning: JTAGging the
-                        iPhone for Fuzzing and Profit
-                     </span>
-                     {this.selectedVideo === '-nFWcKHIUN4' &&
-                        this.embedYouTubeVideo('-nFWcKHIUN4')}
+                     <details style={linkStyle}>
+                        {' '}
+                        <summary>
+                           {' '}
+                           Stacksmashing- Inside Apple’s Lightning: JTAGging the
+                           iPhone for Fuzzing and Profit
+                        </summary>
+                        {this.embedYouTubeVideo('-nFWcKHIUN4')}
+                     </details>
                   </li>
                   <li>
-                     <span
-                        style={linkStyle}
-                        onClick={() => this.toggleVideo('p5tMaWsuGk0')}
-                     >
-                        The secrets of Apple Lightning - Part 1
-                     </span>
-                     {this.selectedVideo === 'p5tMaWsuGk0' &&
-                        this.embedYouTubeVideo('p5tMaWsuGk0')}
+                     <details style={linkStyle}>
+                        <summary>
+                           The secrets of Apple Lightning - Part 1
+                        </summary>
+                        {this.embedYouTubeVideo('p5tMaWsuGk0')}
+                     </details>
                   </li>
                   <li>
-                     <span
-                        style={linkStyle}
-                        onClick={() => this.toggleVideo('D8UGlvBubkA')}
-                     >
-                        Getting JTAG on the iPhone 15
-                     </span>
-                     {this.selectedVideo === 'D8UGlvBubkA' &&
-                        this.embedYouTubeVideo('D8UGlvBubkA')}
+                     <details style={linkStyle}>
+                        <summary>Getting JTAG on the iPhone 15</summary>
+                        {this.embedYouTubeVideo('D8UGlvBubkA')}
+                     </details>
                   </li>
                </ul>
             </div>
