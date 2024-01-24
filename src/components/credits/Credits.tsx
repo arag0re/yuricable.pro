@@ -122,29 +122,28 @@ export default class Credits extends Component {
                         />
                      </li>
                   </ul>
-                  Espeacially thanks to{' '}
-                  <a
-                     style={linkStyle}
-                     href="https://twitter.com/l33tbunni"
-                     target="_blank"
-                     rel="noopener noreferrer"
-                  >
-                     @l33tbunni
-                  </a>{' '}
-                  from the Flipper Discord for beeing so supportive!
-                  <ul className="socials-list">
-                     <li>
-                        <SocialsButton
-                           svgActive={twitterSvg}
-                           svgInactive={twitterSvgBlack}
-                           href="https://twitter.com/l33tbunni"
-                           altText="l33tbunni Twitter"
-                           tooltipText="Check l33tbunni out on Twitter"
-                        />
-                     </li>
-                  </ul>
                </div>
-
+               Espeacially thanks to{' '}
+               <a
+                  style={linkStyle}
+                  href="https://twitter.com/l33tbunni"
+                  target="_blank"
+                  rel="noopener noreferrer"
+               >
+                  @l33tbunni
+               </a>{' '}
+               from the Flipper Discord for beeing so supportive!
+               <ul className="socials-list">
+                  <li>
+                     <SocialsButton
+                        svgActive={twitterSvg}
+                        svgInactive={twitterSvgBlack}
+                        href="https://twitter.com/l33tbunni"
+                        altText="l33tbunni Twitter"
+                        tooltipText="Check l33tbunni out on Twitter"
+                     />
+                  </li>
+               </ul>
                <h3>SDQ</h3>
                <ul>
                   <li>
