@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.6468526e.css",
-    "main.js": "/static/js/main.1b053ed1.js",
+    "main.css": "/static/css/main.d44f3af9.css",
+    "main.js": "/static/js/main.541d965f.js",
     "static/media/Boodle-Regular.otf": "/static/media/Boodle-Regular.01323362459f9acfc963.otf",
     "static/media/twitter.svg": "/static/media/twitter.a6f77dced5e5575b537cf682a7137e0a.svg",
     "static/media/twitter_black.svg": "/static/media/twitter_black.522fa912d6d2cb0353ab37b380b66d1b.svg",
@@ -10,11 +10,11 @@
     "static/media/discord.svg": "/static/media/discord.61d53db1792b72466025725963a88fbb.svg",
     "static/media/discord_black.svg": "/static/media/discord_black.d3d5ed3613ca486ca4b2dad427f2863e.svg",
     "index.html": "/index.html",
-    "main.6468526e.css.map": "/static/css/main.6468526e.css.map",
-    "main.1b053ed1.js.map": "/static/js/main.1b053ed1.js.map"
+    "main.d44f3af9.css.map": "/static/css/main.d44f3af9.css.map",
+    "main.541d965f.js.map": "/static/js/main.541d965f.js.map"
   },
   "entrypoints": [
-    "static/css/main.6468526e.css",
-    "static/js/main.1b053ed1.js"
+    "static/css/main.d44f3af9.css",
+    "static/js/main.541d965f.js"
   ]
 }
