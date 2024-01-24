@@ -104,8 +104,22 @@ p {
 }
 
 .pcb-github-button{
+    opacity: 0.3;
     position: absolute;
     bottom: 0;
     right: 0;
     padding: 10px;
+}
+
+.pcb-github-button:hover {
+    opacity: 1;
+
+    .socials-tooltip {
+        visibility: visible;
+        opacity: 1;
+    }
+
+    .socials-logo {
+        transform: rotate(360deg);
+    }
 }

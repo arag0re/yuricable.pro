@@ -1,18 +1,15 @@
-import React, { Component } from 'react'
+import { Component } from 'react'
 import styled from 'styled-components'
 
 const StyledSocialsButton = styled.a`
-   opacity: 0.3;
    .socials-logo {
       transition: transform 0.8s ease-in-out;
    }
 
    &:hover {
-      opacity: 1;
 
       .socials-tooltip {
          visibility: visible;
-         opacity: 1;
       }
 
       .socials-logo {
