@@ -33,11 +33,9 @@ export default class IncompatibleBrowser extends Component {
             </p>
             <p>Meanwhile you can look at out cool PCB!</p>
             <iframe
-                id="altium-iframe"
+               title="altium"
+               id="altium-iframe"
                src="https://personal-viewer.365.altium.com/client/index.html?feature=embed&source=F7968924-074A-413F-852B-0C0A28F65F61&activeView=PCB"
-               width="1280"
-               height="720"
-               scrolling="no"
             ></iframe>
          </StyledIncompatibleBrowser>
       )
