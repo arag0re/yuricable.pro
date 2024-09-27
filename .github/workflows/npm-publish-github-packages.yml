@@ -16,10 +16,9 @@ jobs:
          - name: Build Project
            run: npm run build
          - name: Upload artifact to enable deployment
-           uses: actions/upload-artifact@v3
+           uses: actions/upload-artifact@v4
            with:
-              name: files
-              run-id: ${{ github.event.workflow_run.id }}
+              name: yuricablesite
               path: ./build
    # Deploy Job
    deploy:
@@ -27,9 +26,9 @@ jobs:
       runs-on: ubuntu-latest
       steps:
          - name: Download artifact
-           uses: actions/download-artifact@v4.1.7
+           uses: actions/download-artifact@v4
            with:
-              name: files
+              name: yuricablesite
               run-id: ${{ github.event.workflow_run.id }}
               path: ./build
          - name: Deploy to GitHub Pages
